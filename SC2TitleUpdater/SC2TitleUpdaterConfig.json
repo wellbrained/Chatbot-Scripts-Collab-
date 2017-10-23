@@ -1,0 +1,22 @@
+{
+  "enabledTitleUpdater": false,
+  "enabledOverlayUpdater": false,
+  "enabledMatchHistoryUpdater": false,
+  "bnetUsername1": "Brain",
+  "bnetUsername2": "",
+  "bnetUsername3": "",
+  "bnetUsername4": "",
+  "bnetUsername5": "",
+  "rankedFtwUrl": "http://www.rankedftw.com/ladder/lotv/1v1/mmr/?team=1340658",
+  "titleInGameAsPlayer": "[Ger/En] Master Zurg - New automatic Bet/Title System! [$race1$v$race2$ vs $player2$]",
+  "titleInGameAsCaster": "",
+  "titleInGameAsOther": "",
+  "titleInMenu": "just a test23 $mymmr$",
+  "titleIn1v1Replay": "",
+  "overlayText1ByUser": "Playing against $player2$ ($race2$) - test mmr $mymmr$",
+  "overlayText2ByUser": "",
+  "overlayText3ByUser": "",
+  "overlayText4ByUser": "",
+  "oauth": "l7ej6liq20fxcbz750jnq1qnczcv1d",
+  "clientID": "nga956o81f2l94tkv7hihns4joxfve"
+}

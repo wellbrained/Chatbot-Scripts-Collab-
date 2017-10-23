@@ -1,0 +1,173 @@
+﻿{
+    "output_file": "SC2TitleUpdaterConfig.json",
+
+    // Default Settings
+    "enabledTitleUpdater": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Enable Stream Title Changes",
+        "tooltip": "Enable this checkbox if you don't want to change your stream titles.",
+        "group": ""
+    },
+    "enabledOverlayUpdater": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Enable Text File Changes",
+        "tooltip": "Enable this checkbox if you don't want to use any text files for your Overlay.",
+        "group": ""
+    },
+    "titleInMenu": {
+        "type": "textbox",
+        "value": "[EU][T] $mymmr$mmr - Road to diamond",
+        "label": "Title in Menu",
+        "tooltip": "This text will be used when you're in the SC2 Menu.\r\nExample: [NA] [Terran] $mymmr$mmr - New Season Hype\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": ""
+    },
+    "titleInGameAsPlayer": {
+        "type": "textbox",
+        "value": "[EU]$mymmr$mmr $matchup$ vs $player2$ - Road to diamond",
+        "label": "Title Ingame - As Player",
+        "tooltip": "This text will be used when you're in a game.\r\nExample: [NA] $mymmr$mmr $matchup$ vs $player2$\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": ""
+    },
+    "titleInGameAsCaster": {
+        "type": "textbox",
+        "value": "Casting $player1$ ($race1$) vs ($race2$) $player2$",
+        "label": "Title Ingame - As Caster",
+        "tooltip": "This text will be used when you're in a game as observer.\r\nExample: Casting $player1$ ($race1$) vs ($race2$) $player2$\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": ""
+    },
+    "titleInGameAsOther": {
+        "type": "textbox",
+        "value": "[EU][T] $mymmr$mmr - Road to diamond",
+        "label": "Title Ingame - As Other (Teamgame, Coop, Arcade)",
+        "tooltip": "This text will be used when you're in another game like teamgames, arcade or archon.\r\nExample: [NA] [Terran] $mymmr$mmr plays Funmaps LUL\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": ""
+    },
+    "titleIn1v1Replay": {
+        "type": "textbox",
+        "value": "[EU][T] $mymmr$mmr - Road to diamond",
+        "label": "Title in Replay",
+        "tooltip": "This text will be used when you're in a replay.\r\nExample: [NA] [Terran] $mymmr$mmr - Replay Analyse\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": ""
+    },
+
+    // Generated text files
+    "overlayText1": {
+        "type": "textbox",
+        "value": "Playing against $player2$ ($race2$) at $mymmr$mmr",
+        "label": "Generated Text File - Text1",
+        "tooltip": "This text will be in textfile 'SC2TitleUpdater_OverlayText1'. It changes the variables into actual live data.\r\nExample: Playing against $player2$ ($race$)\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "On Change - Text files"
+    },
+    "overlayText2": {
+        "type": "textbox",
+        "value": "",
+        "label": "Generated Text File - Text2",
+        "tooltip": "This text will be in textfile 'SC2TitleUpdater_OverlayText2'. It changes the variables into actual live data.\r\nExample: Playing against $player2$ ($race$)\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "On Change - Text files"
+    },
+
+    "overlayText11": {
+        "type": "textbox",
+        "value": "",
+        "label": "In Menu - Text file",
+        "tooltip": "This text will only be used when you're in the menu. Textfile: 'SC2TitleUpdater_OverlayText3'. It changes the variables into actual live data.\r\nExample: Playing against $player2$ ($race$)\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "On Scene - Text Files"
+    },
+    "overlayText12": {
+        "type": "textbox",
+        "value": "",
+        "label": "In Game - Text file",
+        "tooltip": "This text will only be used when you're in a game. Textfile: 'SC2TitleUpdater_OverlayText3'. It changes the variables into actual live data.\r\nExample: Playing against $player2$ ($race$)\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "On Scene - Text Files"
+    },
+    "overlayText13": {
+        "type": "textbox",
+        "value": "",
+        "label": "On Casting - Text file",
+        "tooltip": "This text will only be used when you're in a cast. Textfile: 'SC2TitleUpdater_OverlayText3'. It changes the variables into actual live data.\r\nExample: Playing against $player2$ ($race$)\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "On Scene - Text Files"
+    },
+
+    "overlayText21": {
+        "type": "textbox",
+        "value": "",
+        "label": "In Menu - Text file",
+        "tooltip": "This text will only be used when you're in the menu. Textfile: 'SC2TitleUpdater_OverlayText4'. It changes the variables into actual live data.\r\nExample: Playing against $player2$ ($race$)\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "On Scene - Text Files #2"
+    },
+    "overlayText22": {
+        "type": "textbox",
+        "value": "",
+        "label": "In Game - Text file",
+        "tooltip": "This text will only be used when you're in a game. Textfile: 'SC2TitleUpdater_OverlayText4'. It changes the variables into actual live data.\r\nExample: Playing against $player2$ ($race$)\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "On Scene - Text Files #2"
+    },
+    "overlayText23": {
+        "type": "textbox",
+        "value": "",
+        "label": "On Casting - Text file",
+        "tooltip": "This text will only be used when you're in a cast. Textfile: 'SC2TitleUpdater_OverlayText4'. It changes the variables into actual live data.\r\nExample: Playing against $player2$ ($race$)\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "On Scene - Text Files #2"
+    },
+
+    "bnetUsername1": {
+        "type": "textbox",
+        "value": "Your nickname",
+        "label": "Name of Account #1",
+        "tooltip": "Enter your StarCraft II Account name (without any BattleTag Code '#1234')\r\nExample: Brain",
+        "group": "StarCraft II Accounts"
+    },
+    "bnetUsername2": {
+        "type": "textbox",
+        "value": "",
+        "label": "Name of Account #2",
+        "tooltip": "Enter your StarCraft II Account name (without the BattleTag Code '#1234')\r\nExample: Burny",
+        "group": "StarCraft II Accounts"
+    },
+    "bnetUsername3": {
+        "type": "textbox",
+        "value": "",
+        "label": "Name of Account #3",
+        "tooltip": "Enter your StarCraft II Account name (without the BattleTag Code '#1234')",
+        "group": "StarCraft II Accounts"
+    },
+    "bnetUsername4": {
+        "type": "textbox",
+        "value": "",
+        "label": "Name of Account #4",
+        "tooltip": "Enter your StarCraft II Account name (without the BattleTag Code '#1234')",
+        "group": "StarCraft II Accounts"
+    },
+    "bnetUsername5": {
+        "type": "textbox",
+        "value": "",
+        "label": "Name of Account #5",
+        "tooltip": "Enter your StarCraft II Account name (without the BattleTag Code '#1234')",
+        "group": "StarCraft II Accounts"
+    },
+
+    // User Settings <Kept secret>
+    "oauth": {
+        "type": "textbox",
+        "value": "",
+        "label": "Twitch oauth",
+        "tooltip": "Enter your OAuth here.\r\nLink to get the OAuth: https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=CLIENTID&redirect_uri=http://localhost&scope=channel_editor&scope=user_read+channel_editor",
+        "group": "User settings"
+    },
+    "clientID": {
+        "type": "textbox",
+        "value": "",
+        "label": "clientID",
+        "tooltip": "Register your new application for your Twitch account here: https://www.twitch.tv/kraken/oauth2/clients/new\r\nRedirect URL: http://localhost",
+        "group": "User settings"
+    },
+    "rankedFtwUrl": {
+        "type": "textbox",
+        "value": "http://www.rankedftw.com/ladder/lotv/1v1/mmr/?team=1372705",
+        "label": "RankedFTW URL",
+        "tooltip": "Go to http://rankedftw.com to search your account/link.\r\nExample: http://rankedftw.com/ladder/lotv/1v1/mmr/?team=1481253",
+        "group": "User settings"
+    },
+}

@@ -1,0 +1,15 @@
+### HowTo and Links:
+
+First create an Application with the Redirect URI: http://localhost
+Then go to the OAuth Link and replace "CLIENTID" in the Link with the ClientID you'll get after creating the Application.
+
+### ClientID:
+https://www.twitch.tv/kraken/oauth2/clients/new
+
+### OAuth: 
+https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=CLIENTID&redirect_uri=http://localhost&scope=channel_editor&scope=user_read+channel_editor
+
+### RankedFTW Link:
+http://rankedftw.com
+Search for your Accountname e.g. "Brain" or "Burny" and then click on your profile and the Ladder-Icon top left. 
+It will be a link like this: "http://www.rankedftw.com/ladder/lotv/1v1/mmr/?team=1340658"
