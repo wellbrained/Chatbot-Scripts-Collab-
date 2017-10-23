@@ -1,0 +1,54 @@
+﻿{
+    "output_file": "SC2SceneSwitcherConfig.json",
+
+    // Default Settings
+    "isEnabled": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Enable OBS Scene Switcher",
+        "tooltip": "Enable this Checkbox if you want to activate the Scene Switcher",
+        "group": ""
+    },
+    "obsSceneInMenu": {
+        "type": "textbox",
+        "value": "",
+        "label": "Scene - In Menu",
+        "tooltip": "Scene which activates when you're in the Menu.",
+        "group": ""
+    },
+    "obsSceneInGame": {
+        "type": "textbox",
+        "value": "",
+        "label": "Scene - In Game",
+        "tooltip": "Scene which activates when you're ingame.",
+        "group": ""
+    },
+    "obsSceneInReplay": {
+        "type": "textbox",
+        "value": "",
+        "label": "Scene - In Replay",
+        "tooltip": "Scene which activates when you are in a Replay.",
+        "group": ""
+    },
+    "isCasterModeEnabled": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Enable Casting Mode",
+        "tooltip": "Enable this Checkbox if you're casting a tournament and need a different Overlay for Menu / Ingame.",
+        "group": ""
+    },
+    "obsSceneCasterInMenu": {
+        "type": "textbox",
+        "value": "",
+        "label": "Casting - In Menu",
+        "tooltip": "Scene which activates when you're in menu as caster.",
+        "group": ""
+    },
+    "obsSceneCasterInGame": {
+        "type": "textbox",
+        "value": "",
+        "label": "Casting - In Game",
+        "tooltip": "Scene which activates when you're in game as caster.",
+        "group": ""
+    },
+}
