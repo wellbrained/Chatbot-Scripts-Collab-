@@ -1,0 +1,122 @@
+﻿{
+    "output_file": "settings.json",
+
+    "cdInterval": {
+        "type": "slider",
+        "label": "Countdown in minutes",
+        "value": 5,
+        "min": 0,
+        "max": 90,
+        "ticks": 1,
+        "tooltip": "Time from where it counts down.",
+        "group": "Countdown"
+    },
+    "cdTimeFormat": {
+        "type": "textbox",
+        "value": "$mm$:$ss$",
+        "label": "Time Format",
+        "tooltip": "Set the format of your Countdown here. Available variables:
+        $autoFormat$ = Removes all unnecessary '0' values (5:33)
+        $hh$ = Hours with '0' (05 hours)
+        $h$ = Hours without extra '0' (5 hours, 15 hours)
+        $mm$ = Minutes with '0' (05 minutes)
+        $m$ = Minutes without extra '0' (5 minutes, 15 minutes)
+        $ss$ = Seconds with '0' (05 seconds)
+        $s$ = Seconds without extra '0' (5 seconds, 15 seconds)",
+        "group": "Countdown"
+    },
+    "cdCustomText": {
+        "type": "textbox",
+        "value": "Starting soon",
+        "label": "Custom Text after Countdown",
+        "tooltip": "This text will be used after the Countdown is finished",
+        "group": "Countdown"
+    },
+    "cdSetCountdown": {
+        "type": "textbox",
+        "value": "!countdown",
+        "label": "Set countdown chat command",
+        "tooltip": "This command will be used when setting a new countdown via twitch chat command.
+E.g. writing \"!countdown 300\" will set and start a new countdown from 5:00",
+        "group": "Countdown"
+    },
+    "cdShowCountdownResponse": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Show countdown response",
+        "tooltip": "If turned on, it will display a response message
+        e.g. if the broadcaster writes
+        \"!countdown 300\"
+        the response message would be
+        \"New countdown set to 5:00\"",
+        "group": "Countdown"
+    },
+    "btnCdStart": {
+        "type": "button",
+        "label": "Start Countdown",
+        "tooltip": "Starts the Countdown!",
+        "function": "StartCountdown",
+        "wsevent": "",
+        "group": "Countdown"
+    },
+    "btnCdRestart": {
+        "type": "button",
+        "label": "Reset Countdown",
+        "tooltip": "Resets the Countdown!",
+        "function": "ResetCountdown",
+        "wsevent": "",
+        "group": "Countdown"
+    },
+
+    "customUptimeText": {
+        "type": "textbox",
+        "value": "$h$:$mm$:$ss$",
+        "label": "Time Format",
+        "tooltip": "Set the format of your Uptime here. Available variables:
+        $autoFormat$ = Removes all unnecessary '0' values (5:33)
+        $hh$ = Hours with '0' (05 hours)
+        $h$ = Hours without extra '0' (5 hours, 15 hours)
+        $mm$ = Minutes with '0' (05 minutes)
+        $m$ = Minutes without extra '0' (5 minutes, 15 minutes)
+        $ss$ = Seconds with '0' (05 seconds)
+        $s$ = Seconds without extra '0' (5 seconds, 15 seconds)",
+        "group": "Uptime"
+    },
+    "maxSleepTimer": {
+        "type": "slider",
+        "label": "Max Sleep Timer",
+        "value": 10,
+        "min": 1,
+        "max": 60,
+        "ticks": 1,
+        "tooltip": "Time until the Uptime gets completely reset.\r\nIf OBS crashes or the connection to Twitch disconnects the timer will continue where it stopped.",
+        "group": "Uptime"
+    },
+    "setUptime": {
+        "type": "textbox",
+        "value": "!setuptime",
+        "label": "Set Uptime chat command",
+        "tooltip": "This command will be used when setting a new uptime via twitch chat command.
+E.g. writing \"!setuptime 300\" will set the uptime to 5:00",
+        "group": "Uptime"
+    },
+    "showUptimeResponse": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Show uptime response",
+        "tooltip": "If turned on, it will display a response message when a new uptime is set
+        e.g. if the broadcaster writes
+        \"!setuptime 300\"
+        the response message would be
+        \"New uptime set to 5:00\"",
+        "group": "Uptime"
+    },
+    "btnUptimeReset": {
+        "type": "button",
+        "label": "Reset Uptime",
+        "tooltip": "Resets the Uptime in case",
+        "function": "ResetUptime",
+        "wsevent": "",
+        "group": "Uptime"
+    }
+}
