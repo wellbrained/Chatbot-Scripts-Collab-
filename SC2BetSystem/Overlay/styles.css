@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC');
+
+* { 
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+/* width: 559px height: 275 */
+#container {
+  background: url(http://i.imgur.com/87gmyqb.png) no-repeat;
+  width: 645px;
+  height: 316px;
+  
+  padding: 35px;
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  color: #fff;
+}
+#header {
+  width: 100%;
+  height: 72px;
+}
+h1 {
+  text-align: center;
+  font-size: 48px;
+  line-height: 72px;
+  padding: 0;
+  margin: 0;
+}
+#vsColumn {
+  float: left;
+  width: 7%;
+  font-family: 'Patrick Hand SC', cursive;
+  
+  padding-top: 60px;
+  font-size: 30px;
+}
+#p1, #p2 {
+  float: left;
+  width: 46%;
+}
+#p1 {
+  margin-left: 1%;
+}
+#p1Cmd, #p2Cmd {
+  height: 37px;
+  line-height: 37px;
+  text-align: center;
+}
+#p1Name, #p2Name, #p1 .race, #p2 .race {
+  float: left;
+}
+#player1, #player2 {
+  background: url(http://i.imgur.com/YbyLwUs.png) no-repeat;
+  width: 257px;
+  height: 61px;
+  margin-top: 10px;
+  
+  line-height: 61px;
+  font-size: 20px;
+  text-align: center;
+}
+#p1Name, #p2Name {
+  width: 210px;
+}
+.winner {
+  background: url(http://i.imgur.com/HrOBpCj.png) no-repeat !important;
+}
+.race {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  top: 14px;
+}
+#p1 .race {
+  margin-right: 15px;
+}
+#p2 .race {
+  margin-left: 15px;
+}
+.zerg {
+  background: url(http://i.imgur.com/gmGJnoV.png) no-repeat;
+}
+.terran {
+  background: url(http://i.imgur.com/FoRMvMH.png) no-repeat;
+}
+.protoss {
+  background: url(http://i.imgur.com/S7pa2di.png) no-repeat;
+}
+.random {
+  background: url("https://vignette2.wikia.nocookie.net/chillsonicfanon/images/5/5f/Kappa_emote.png") no-repeat;
+  background-size: 24px;
+}
+.playerBets {
+  padding-top: 17px;
+  line-height: 38px;
+}
+.playerBets span {
+  width: 100px;
+  display: inline-block;
+  font-size: 13px;
+  word-wrap: break-word;
+  margin-left: 7px;
+  line-height: 18px;
+  text-align: center;
+  height: 40px;
+  overflow: hidden;
+}
+.playerBets div {
+  background: url(http://i.imgur.com/CiOxfMf.png) no-repeat;
+  width: 144px;
+  height: 41px;
+  text-align: center;
+}
+.playerBets div.betWinner {
+  background: url(http://i.imgur.com/6NnRNbX.png) no-repeat;
+}
+#p1 .playerBets div {
+  float: right;
+  margin-right: 9px;
+}
+#p2 .playerBets div {
+  float: left;
+}

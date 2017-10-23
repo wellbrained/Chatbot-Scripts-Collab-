@@ -1,0 +1,291 @@
+﻿{
+    "output_file": "SC2BetSystemConfig.json",
+
+    "isEnabled": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Betting System Active",
+        "tooltip": "",
+        "group": ""
+    },
+    "betDuration": {
+        "type": "slider",
+        "label": "Bet Duration (in Seconds)",
+        "value": 120,
+        "min": 10,
+        "max": 300,
+        "ticks": 2,
+        "tooltip": "After how many seconds - after the game has started - will the bet be closed?\r\nNotice: Keep in mind that you dont want people to bet shortly before the game is decided (We recommend 120 seconds).",
+        "group": ""
+    },
+    "rewardMultiplier": {
+        "type": "slider",
+        "label": "Payout Multiplier",
+        "value": 2.0,
+        "min": 1.0,
+        "max": 5.0,
+        "ticks": 0.1,
+        "tooltip": "Set multiplier of the betting amounts (x1.0 = original amount).\r\nExample: x2.5 = Gives you 250% of the amount you bet. Risk 100 and you get 250 if you gambled correct.",
+        "group": ""
+    },
+    "minBet": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Minimal Bet Amount",
+        "tooltip": "Minimal amount of points (currency) to bet.",
+        "group": ""
+    },
+    "maxBet": {
+        "type": "numberbox",
+        "value": 150,
+        "label": "Maximum Bet Amount",
+        "tooltip": "Maximum Amount of points (currency) to bet.",
+        "group": ""
+    },
+    "cmdBetWin": {
+        "type": "textbox",
+        "value": "#win",
+        "label": "The command the viewers have to use to gamble on the streamer to win this match.",
+        "tooltip": "Example: #win",
+        "group": ""
+    },
+    "cmdBetLose": {
+        "type": "textbox",
+        "value": "#lose",
+        "label": "The command the viewers have to use to gamble on the streamer to lose this match.",
+        "tooltip": "Example: #lose",
+        "group": ""
+    },
+    "cmdAbort": {
+        "type": "textbox",
+        "value": "#abort",
+        "label": "Abort command which cancels the running bet (even after the bet has closed) and refunds every participant.",
+        "tooltip": "Example: #abort",
+        "group": ""
+    },
+    "allowModsToAbort": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Can Bets be aborted by Mods?",
+        "tooltip": "Are moderators also allowed to abort bets?",
+        "group": ""
+    },
+
+    "bnetUsername1": {
+        "type": "textbox",
+        "value": "",
+        "label": "Name of Account #1",
+        "tooltip": "Name of your StarCraft II nickname (For each region and no Bnet ID e.g. Brain#1337). \r\n Example: Brain",
+        "group": "StarCraft II Accounts"
+    },
+    "bnetUsername2": {
+        "type": "textbox",
+        "value": "",
+        "label": "Name of Account #2",
+        "tooltip": "Name of your StarCraft II nickname (For each region and no Bnet ID e.g. Burny#1338). \r\n Example: Burny",
+        "group": "StarCraft II Accounts"
+    },
+    "bnetUsername3": {
+        "type": "textbox",
+        "value": "",
+        "label": "Name of Account #3",
+        "tooltip": "Name of your StarCraft II nickname (For each region and no Bnet ID).",
+        "group": "StarCraft II Accounts"
+    },
+    "bnetUsername4": {
+        "type": "textbox",
+        "value": "",
+        "label": "Name of Account #4",
+        "tooltip": "Name of your StarCraft II nickname (For each region and no Bnet ID).",
+        "group": "StarCraft II Accounts"
+    },
+    "bnetUsername5": {
+        "type": "textbox",
+        "value": "",
+        "label": "Name of Account #5",
+        "tooltip": "Name of your StarCraft II nickname (For each region and no Bnet ID).",
+        "group": "StarCraft II Accounts"
+    },
+
+    "responseBetOpened": {
+        "type": "textbox",
+        "value": "$mychannel has joined a new match. Betting is now open.",
+        "label": "Bet has started",
+        "tooltip": "Notification message when the a bet has started (automatically starts when a 1v1 is detected, excluding matches vs AI).\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseBetClosed": {
+        "type": "textbox",
+        "value": "Countdown ended. Betting is now closed.",
+        "label": "Bet has closed",
+        "tooltip": "Notification message when the new bet has closed.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseBetCanceled": {
+        "type": "textbox",
+        "value": "Canceling the running bet. Refunding every participant.",
+        "label": "Bet was canceled",
+        "tooltip": "Notification message for the cancel of a running bet. The bets get refunded.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseVictoryCorrectBets": {
+        "type": "textbox",
+        "value": "$mychannel has won the game. Total payout of $totalPointsWon: $winnersWithAmount.",
+        "label": "Match won - Had correct bets",
+        "tooltip": "Message when the match was won and people did bet on it.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseVictoryWrongBets": {
+        "type": "textbox",
+        "value": "$mychannel has won the game. Noone has gambled correctly, a total of $totalAmountGambled $currencyName have been lost.",
+        "label": "Match won - Had no correct bets",
+        "tooltip": "Message when the match was won and nobody did bet on it.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseVictoryNoBets": {
+        "type": "textbox",
+        "value": "$mychannel has won the game. Bet next time to earn some $currencyName!",
+        "label": "Match won - No bets",
+        "tooltip": "Message when the match was won and nobody did bet at all.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseDefeatCorrectBets": {
+        "type": "textbox",
+        "value": "$mychannel has lost the game. Total payout of $totalPointsWon: $winnersWithAmount.",
+        "label": "Match lost - Had correct bets",
+        "tooltip": "Message when the match was lost and people did bet on it.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseDefeatWrongBets": {
+        "type": "textbox",
+        "value": "$mychannel has lost the game. Noone has gambled correctly, a total of $totalAmountGambled $currencyName have been lost.",
+        "label": "Match lost - Had no correct bets",
+        "tooltip": "Message when the match was lost and nobody did bet on it.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseDefeatNoBets": {
+        "type": "textbox",
+        "value": "$mychannel has lost the game. Bet next time to earn some $currencyName!",
+        "label": "Match lost - No bets",
+        "tooltip": "Message when the match was lost and nobody did bet at all.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseHowToUseBetCommand": {
+        "type": "textbox",
+        "value": "Write \"$cmdBetWin <amount>\" or \"$cmdBetLose <amount>\" to bet some of your $currencyName!",
+        "label": "Help Command",
+        "tooltip": "Message which gets triggered when a command gets written alone (#win) or when there is no number after the command (#win <nonumber>).\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseNotEnoughPoints": {
+        "type": "textbox",
+        "value": "@$user you don\"t seem to have that many $currencyName.",
+        "label": "Not enough Currency",
+        "tooltip": "Message when the user has not as many points as he wants to bet.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseUserJoinedBet": {
+        "type": "textbox",
+        "value": "Users successfully joined: $recentlyJoinedUsers",
+        "label": "People who joined the Bet",
+        "tooltip": "Message which posts every user who joined the bet in 3sec intervals (after the last bet).\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseUserAlreadyPlacedBet": {
+        "type": "textbox",
+        "value": "@$user you already joined the bet! Wait for the next game to start to make another bet.",
+        "label": "Already placed Bet",
+        "tooltip": "Message when the user tries to bet again during the same match.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseNotCorrectBetAmount": {
+        "type": "textbox",
+        "value": "@$user the betting amount has to be between $minBet and $maxBet!",
+        "label": "Invalid Bet Amount",
+        "tooltip": "Message when the user tries to bet something which is not between your set minBet and maxBet amounts.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseStarcraftClosed": {
+        "type": "textbox",
+        "value": "StarCraft has ended while a bet was running. Refunding every participant.",
+        "label": "StarCraft II crashed",
+        "tooltip": "Message when StarCraft II crashed. The points will be refunded.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+    "responseTwoMatchingNames": {
+        "type": "textbox",
+        "value": "Bet has failed to start because both players are in $mychannel's list of StarCraft usernames.",
+        "label": "Both names are found in the SC2 Accounts",
+        "tooltip": "Message when both players have the same name or the opponent has a name from your StarCraft II Accounts list.\r\nFor all parameters, check out the spreadsheet overview (shortcut file in the Folder).",
+        "group": "Chat Messages"
+    },
+
+
+    "overlayTitle": {
+        "type": "textbox",
+        "value": "Who will win?",
+        "label": "Title",
+        "tooltip": "Set the title for the overlay.",
+        "group": "Overlay Settings"
+    },
+    "overlayCurrencyShortName": {
+        "type": "textbox",
+        "value": "",
+        "label": "Shortname for Currency (max 8 digits)",
+        "tooltip": "If you have a long currency name you can set a custom one here.\r\nIf you dont set a shortname the normal currency name will be cut off at 8 digits.",
+        "group": "Overlay Settings"
+    },
+    "overlayChatCmdWin": {
+        "type": "textbox",
+        "value": "$cmdBetWin <Amount>",
+        "label": "Chat Command Example Win (max 20 digits)",
+        "tooltip": "Example text for people to see how to bet on the streamer.",
+        "group": "Overlay Settings"
+    },
+    "overlayChatCmdLose": {
+        "type": "textbox",
+        "value": "$cmdBetLose <Amount>",
+        "label": "Chat Command Example Lose (max 20 digits)",
+        "tooltip": "Example text for people to see how to bet against the streamer.",
+        "group": "Overlay Settings"
+    },
+    "overlayLabelWin": {
+        "type": "textbox",
+        "value": "Total amount $cmdBetWin",
+        "label": "Label Field left side (max 24 digits)",
+        "tooltip": "Text which gets displayed next to the total amount of points bet on the streamer.",
+        "group": "Overlay Settings"
+    },
+    "overlayLabelLose": {
+        "type": "textbox",
+        "value": "Total amount $cmdBetLose",
+        "label": "Label Field right side (max 24 digits)",
+        "tooltip": "Text which gets displayed next to the total amount of points bet against the streamer.",
+        "group": "Overlay Settings"
+    },
+    "overlayShowWinnerDuration": {
+        "type": "slider",
+        "label": "Duration for highlighting Winner",
+        "value": 4.0,
+        "min": 2.0,
+        "max": 20.0,
+        "ticks": 2,
+        "tooltip": "Set the duration where the winner gets highlighted before hiding the Bet.",
+        "group": "Overlay Settings"
+    },
+    "overlayHideBetAfterClosed": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Hide Bet Overlay after Closing",
+        "tooltip": "Decide if you want to hide the bet after closing.\r\nIt will show up to announce the winner at the end.",
+        "group": "Overlay Settings"
+    },
+    "overlayFadeInType": {
+        "type": "dropdown",
+        "label": "Fade-In Type",
+        "value": "BottomUp",
+        "tooltip": "Decide from which side you want the overlay to fade in.",
+        "items": ["TopDown","BottomUp","LeftRight", "RightLeft"],
+        "group": "Overlay Settings"
+    },
+}
