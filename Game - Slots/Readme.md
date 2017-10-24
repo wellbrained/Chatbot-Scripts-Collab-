@@ -1,9 +1,6 @@
 # Game - Slots
 Created by:
-
-Brain - www.twitch.tv/wellbrained
-
-Burny - www.twitch.tv/burnysc2
+Brain - www.twitch.tv/wellbrained // Burny - www.twitch.tv/burnysc2
 
 ### Current Version: 1.1.2
 
