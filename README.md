@@ -13,4 +13,5 @@ Scripts for the streaming bot Ankhbot
 > Adds a SceneSwitcher which works together with OBS and switches Scenes depending on the StarCraft 2 Ingame Status.
 
 - TitleUpdater
+> Adds a TitleUpdater for Twitch streams with additional infos depending on the StarCraft 2 Ingame Status.
 - BettingSystem
