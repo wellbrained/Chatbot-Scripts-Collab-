@@ -1,5 +1,4 @@
 # Game - Slots
-
 Created by:
 
 Brain - www.twitch.tv/wellbrained
