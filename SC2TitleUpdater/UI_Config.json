@@ -117,50 +117,50 @@
         "value": "Your nickname",
         "label": "Name of Account #1",
         "tooltip": "Enter your StarCraft II Account name (without any BattleTag Code '#1234')\r\nExample: Brain",
-        "group": "StarCraft II Accounts"
+        "group": "Player Names"
     },
     "bnetUsername2": {
         "type": "textbox",
         "value": "",
         "label": "Name of Account #2",
         "tooltip": "Enter your StarCraft II Account name (without the BattleTag Code '#1234')\r\nExample: Burny",
-        "group": "StarCraft II Accounts"
+        "group": "Player Names"
     },
     "bnetUsername3": {
         "type": "textbox",
         "value": "",
         "label": "Name of Account #3",
         "tooltip": "Enter your StarCraft II Account name (without the BattleTag Code '#1234')",
-        "group": "StarCraft II Accounts"
+        "group": "Player Names"
     },
     "bnetUsername4": {
         "type": "textbox",
         "value": "",
         "label": "Name of Account #4",
         "tooltip": "Enter your StarCraft II Account name (without the BattleTag Code '#1234')",
-        "group": "StarCraft II Accounts"
+        "group": "Player Names"
     },
     "bnetUsername5": {
         "type": "textbox",
         "value": "",
         "label": "Name of Account #5",
         "tooltip": "Enter your StarCraft II Account name (without the BattleTag Code '#1234')",
-        "group": "StarCraft II Accounts"
+        "group": "Player Names"
     },
 
     // User Settings <Kept secret>
+    "clientID": {
+        "type": "textbox",
+        "value": "",
+        "label": "clientID",
+        "tooltip": "Register your new application for your Twitch account here: https://www.twitch.tv/kraken/oauth2/clients/new\r\nRedirect URI: http://localhost",
+        "group": "User settings"
+    },
     "oauth": {
         "type": "textbox",
         "value": "",
         "label": "Twitch oauth",
         "tooltip": "Enter your OAuth here.\r\nLink to get the OAuth: https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=CLIENTID&redirect_uri=http://localhost&scope=channel_editor&scope=user_read+channel_editor",
-        "group": "User settings"
-    },
-    "clientID": {
-        "type": "textbox",
-        "value": "",
-        "label": "clientID",
-        "tooltip": "Register your new application for your Twitch account here: https://www.twitch.tv/kraken/oauth2/clients/new\r\nRedirect URL: http://localhost",
         "group": "User settings"
     },
     "rankedFtwUrl": {
@@ -170,4 +170,20 @@
         "tooltip": "Go to http://rankedftw.com to search your account/link.\r\nExample: http://rankedftw.com/ladder/lotv/1v1/mmr/?team=1481253",
         "group": "User settings"
     },
+    "btnGoToClientID": {
+        "type": "button",
+        "label": "Get Client ID",
+        "tooltip": "Click this link to receive a Client ID by making a new twitch application.\r\nUse the \"Redirect URI: http://localhost\"\r\nAfter you receive the client ID, enter it in the field above and hit \"save settings\". Then click the button below.",
+        "function": "OpenClientIDLink",
+        "wsevent": "",
+        "group": "User settings"
+    },
+    "btnGoToOauth": {
+        "type": "button",
+        "label": "Enter ClientID and get OAuth",
+        "tooltip": "Before pressing this button, enter your client ID that you received from creating a new twitch application (with the button above) and hit \"save settings\"\r\nNow you can press this button to get redirected to a webpage where you can authorize your account. After you hit \"Authorize\" you get redirected to a <blank> page (literally), this is intended.\r\nNow you see the URL at the top has changed: the key marked by the \"access_token=\" (in the URL) is your OAuth key. Enter it in the oauth field above.",
+        "function": "OpenOauthLink",
+        "wsevent": "",
+        "group": "User settings"
+    }
 }
