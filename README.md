@@ -1,5 +1,5 @@
 # Streamlabs Chatbot Scripts (Formerly AnkhBot)
-Scripts for the Streamlabs Chatbot
+Scripts for the Streamlabs Chatbot to interact with your community on streaming platforms.
 
 You can find more infos and download it here: https://streamlabs.com/chatbot
 
