@@ -1,9 +1,10 @@
-var settings = {
-  "isEnabled": true,
+﻿var settings = {
+  "isEnabled": false,
   "obsSceneInMenu": "Outgame",
   "obsSceneInGame": "StarCraft II",
-  "obsSceneInReplay": "Outro",
+  "obsSceneInReplay": "",
   "isCasterModeEnabled": false,
   "obsSceneCasterInMenu": "",
-  "obsSceneCasterInGame": ""
+  "obsSceneCasterInGame": "",
+  "obsSceneCasterInReplay": ""
 };
