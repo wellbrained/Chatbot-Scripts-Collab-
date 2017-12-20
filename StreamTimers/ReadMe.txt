@@ -5,12 +5,14 @@ Description: Uptime & Countdown with UI Interface
 Created by: 
 Brain - www.twitch.tv/wellbrained
 Burny - www.twitch.tv/burnysc2
-Version: 1.1.0
+Version: 1.1.1
 
 
 ###############
 Version History
 ###############
+1.1.1:
+ ~ Necessary changes since AnkhBot became Streamlabs Chatbot
 1.1.0:
  ~ Added custom chat commands to set Countdown and Uptime
  ~ Added the option to display responses to the commands
