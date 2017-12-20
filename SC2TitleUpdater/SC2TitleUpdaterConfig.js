@@ -19,7 +19,7 @@
   "bnetUsername3": "",
   "bnetUsername4": "",
   "bnetUsername5": "",
-  "clientID": "d700s8gt6kwtxgcizxsrwzvo70mg3a",
-  "oauth": "d700s8gt6kwtxgcizxsrwzvo70mg3a",
+  "clientID": "",
+  "oauth": "",
   "rankedFtwUrl": "http://www.rankedftw.com/ladder/lotv/1v1/mmr/?team=1372705"
 };
