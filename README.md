@@ -1,7 +1,7 @@
-# AnkhBot Scripts
-Scripts for the streaming bot Ankhbot
+# Streamlabs Chatbot Scripts (Formerly AnkhBot)
+Scripts for the Streamlabs Chatbot
 
-You can find more infos and download it here: http://www.ankhbot.com
+You can find more infos and download it here: https://streamlabs.com/chatbot
 
 ## General scripts
 - StreamTimers
