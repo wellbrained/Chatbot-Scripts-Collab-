@@ -10,6 +10,9 @@ You can find more infos and download it here: https://streamlabs.com/chatbot
 - Game "Slots"
 > Adds a slotmachine chat-game which will be played with emotes
 
+- TTSAnnouncer
+> Reads messages out loud from chat (Text-to-Speech). Has costs, multiple languages, settings and filters. 
+
 ## StarCraft 2 scripts
 - SceneSwitcher
 > Adds a SceneSwitcher which works together with OBS and switches Scenes depending on the StarCraft 2 Ingame Status.
