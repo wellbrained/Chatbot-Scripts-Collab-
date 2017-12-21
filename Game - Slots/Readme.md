@@ -2,9 +2,11 @@
 Created by:
 Brain - www.twitch.tv/wellbrained // Burny - www.twitch.tv/burnysc2
 
-### Current Version: 1.1.2
+### Current Version: 1.1.3
 
 ### Version History:
+* 1.1.3:
+    * Necessary changes since AnkhBot became Streamlabs Chatbot
 * 1.1.2:
     * Fixed the used amount of emotes
     * New default messages

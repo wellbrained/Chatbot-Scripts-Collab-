@@ -1,16 +1,25 @@
-﻿#---------------------------------------
+"""
+###############
+(c) Copyright
+###############
+Brain - www.twitch.tv/wellbrained
+Burny - www.twitch.tv/burnysc2
+All rights reserved. You may edit the files for personal use only.
+"""
+
+#---------------------------------------
 #	Import Libraries
 #---------------------------------------
 import sys
 import datetime
 import json
 import time
-import os 
+import os
 from collections import defaultdict
 import threading
-if __name__ != "__main__":
-	import clr
-import urllib2
+import clr
+import codecs
+
 
 #---------------------------------------
 #	[Required]	Script Information
@@ -19,14 +28,13 @@ ScriptName = "SCII - Title Updater"
 Website = "https://www.brains-world.eu"
 Description = "Update your Streamtitle for every StarCraft II Mode and create custom text files."
 Creator = "Brain & Burny"
-Version = "1.1.1"
+Version = "1.0.2"
 
 #---------------------------------------
 #	Set Variables
 #---------------------------------------
+debuggingMode = True
 configFile = "SC2TitleUpdaterConfig.json"
-
-#data set by user
 enabledTitleUpdater = False
 enabledOverlayUpdater = False
 enabledMatchHistoryUpdater = False
@@ -47,13 +55,13 @@ titleUpdate = {
 	"overlayText1ByUser": "",
 	"overlayText2ByUser": "",
 
-	"overlayText11ByUser": "",
-	"overlayText12ByUser": "",
-	"overlayText13ByUser": "",
+	"overlayText11": "",
+	"overlayText12": "",
+	"overlayText13": "",
 
-	"overlayText21ByUser": "",
-	"overlayText22ByUser": "",
-	"overlayText23ByUser": "",
+	"overlayText21": "",
+	"overlayText22": "",
+	"overlayText23": "",
 
 	"overlayText1Written": "",
 	"overlayText2Written": "",
@@ -103,9 +111,10 @@ variables = {
 #---------------------------------------
 def Init():
 	global titleUpdate, settings
+
 	path = os.path.dirname(__file__)
-	with open(os.path.join(path, configFile)) as file:
-		settings = json.load(file)
+	with codecs.open(os.path.join(path, configFile), encoding='utf-8-sig', mode='r') as file:
+		settings = json.load(file, encoding='utf-8-sig')
 	settings["inGameIds"] = []
 	settings["inGameIds"].append(settings["bnetUsername1"].lower())
 	settings["inGameIds"].append(settings["bnetUsername2"].lower())
@@ -113,7 +122,7 @@ def Init():
 	settings["inGameIds"].append(settings["bnetUsername4"].lower())
 	settings["inGameIds"].append(settings["bnetUsername5"].lower())
 	settings["channel"] = Parent.GetChannelName()
-	GetMmrFromRankedFtw()
+	GetMmrFromRankedFtw2()
 	return
 
 #---------------------------------------
@@ -132,7 +141,7 @@ def Tick():
 	t1 = time.time()
 	if t1 - titleUpdate["timeSinceLastMMRupdate"] > titleUpdate["mmrUpdateInterval"]:
 		titleUpdate["timeSinceLastMMRupdate"] = t1
-		threading.Thread(target=GetMmrFromRankedFtw, args=()).start()
+		threading.Thread(target=GetMmrFromRankedFtw2, args=()).start()
 
 	if t1 - titleUpdate["timeSinceLastUpdate"] > titleUpdate["updateInterval"]:
 		titleUpdate["timeSinceLastUpdate"] = t1
@@ -144,8 +153,9 @@ def Tick():
 def GetSc2ApiResponse():
 	global titleUpdate
 	try:
-		gameResponse = json.load(urllib2.urlopen(titleUpdate["gameUrl"]))
-		uiResponse = json.load(urllib2.urlopen(titleUpdate["uiUrl"]))
+		gameResponse = json.loads(json.loads(Parent.GetRequest(titleUpdate["gameUrl"], {}))['response'])
+		uiResponse = json.loads(json.loads(Parent.GetRequest(titleUpdate["uiUrl"], {}))['response'])
+
 		time1 = time.time()
 		if titleUpdate["latestApiUpdateTimestamp"] < time1:
 			titleUpdate["latestApiUpdateTimestamp"] = time1
@@ -260,63 +270,69 @@ def UpdateTwitchTitle():
 			if titleUpdate["overlayText1Written"] != ReplaceVariables(settings["overlayText1"]):
 				titleUpdate["overlayText1Written"] = ReplaceVariables(settings["overlayText1"])
 				print("Debug: trying to write overlay file 1:", titleUpdate["overlayText1Written"])
-				with open(os.path.join(path, titleUpdate["overlayText1path"]), "w+") as f:
-					f.write(titleUpdate["overlayText1Written"])
+				with codecs.open(os.path.join(path, titleUpdate["overlayText1path"]), encoding='utf-8-sig', mode='w+') as file:
+					file.write(titleUpdate["overlayText1Written"])
+					
 			if titleUpdate["overlayText2Written"] != ReplaceVariables(settings["overlayText2"]):
 				titleUpdate["overlayText2Written"] = ReplaceVariables(settings["overlayText2"])
 				print("Debug: trying to write overlay file 2:", titleUpdate["overlayText2Written"])
-				with open(os.path.join(path, titleUpdate["overlayText2path"]), "w+") as f:
-					f.write(titleUpdate["overlayText2Written"])
+				with codecs.open(os.path.join(path, titleUpdate["overlayText2path"]), encoding='utf-8-sig', mode='w+') as file:
+					file.write(titleUpdate["overlayText2Written"])
 
-			if (titleUpdate["overlayText11Written"] != ReplaceVariables(settings["overlayText11"]) 
+			if (titleUpdate["overlayText11Written"] != ReplaceVariables(settings["overlayText11"])
 				and apiData["inStarcraftLocation"] == "menu"):
 				titleUpdate["overlayText11Written"] = ReplaceVariables(settings["overlayText11"])
 				print("Debug: trying to write overlay file 3:", titleUpdate["overlayText11Written"])
-				with open(os.path.join(path, titleUpdate["overlayText11path"]), "w+") as f:
-					f.write(titleUpdate["overlayText11Written"])
-			elif (titleUpdate["overlayText11Written"] != ReplaceVariables(settings["overlayText12"]) 
+				with codecs.open(os.path.join(path, titleUpdate["overlayText11path"]), encoding='utf-8-sig', mode='w+') as file:
+					file.write(titleUpdate["overlayText11Written"])					
+			elif (titleUpdate["overlayText11Written"] != ReplaceVariables(settings["overlayText12"])
 				and apiData["inStarcraftLocation"] == "1v1AsPlayer"):
 				titleUpdate["overlayText11Written"] = ReplaceVariables(settings["overlayText12"])
-				with open(os.path.join(path, titleUpdate["overlayText11path"]), "w+") as f:
-					f.write(titleUpdate["overlayText11Written"]),
-			elif (titleUpdate["overlayText11Written"] != ReplaceVariables(settings["overlayText13"]) 
+				with codecs.open(os.path.join(path, titleUpdate["overlayText11path"]), encoding='utf-8-sig', mode='w+') as file:
+					file.write(titleUpdate["overlayText11Written"])
+			elif (titleUpdate["overlayText11Written"] != ReplaceVariables(settings["overlayText13"])
 				and apiData["inStarcraftLocation"] == "1v1AsCaster"):
 				titleUpdate["overlayText11Written"] = ReplaceVariables(settings["overlayText13"])
-				with open(os.path.join(path, titleUpdate["overlayText11path"]), "w+") as f:
-					f.write(titleUpdate["overlayText11Written"])
+				with codecs.open(os.path.join(path, titleUpdate["overlayText11path"]), encoding='utf-8-sig', mode='w+') as file:
+					file.write(titleUpdate["overlayText11Written"])
 
-			if (titleUpdate["overlayText21Written"] != ReplaceVariables(settings["overlayText21"]) 
+			if (titleUpdate["overlayText21Written"] != ReplaceVariables(settings["overlayText21"])
 				and apiData["inStarcraftLocation"] == "menu"):
 				titleUpdate["overlayText21Written"] = ReplaceVariables(settings["overlayText21Written"])
 				print("Debug: trying to write overlay file 3:", titleUpdate["overlayText11Written"])
-				with open(os.path.join(path, titleUpdate["overlayText21path"]), "w+") as f:
-					f.write(titleUpdate["overlayText21Written"])
-			elif (titleUpdate["overlayText21Written"] != ReplaceVariables(settings["overlayText22"]) 
+				with codecs.open(os.path.join(path, titleUpdate["overlayText21path"]), encoding='utf-8-sig', mode='w+') as file:
+					file.write(titleUpdate["overlayText21Written"])
+
+			elif (titleUpdate["overlayText21Written"] != ReplaceVariables(settings["overlayText22"])
 				and apiData["inStarcraftLocation"] == "1v1AsPlayer"):
 				titleUpdate["overlayText21Written"] = ReplaceVariables(settings["overlayText22"])
-				with open(os.path.join(path, titleUpdate["overlayText21path"]), "w+") as f:
-					f.write(titleUpdate["overlayText21Written"]),
-			elif (titleUpdate["overlayText21Written"] != ReplaceVariables(settings["overlayText23"]) 
+				with codecs.open(os.path.join(path, titleUpdate["overlayText21path"]), encoding='utf-8-sig', mode='w+') as file:
+					file.write(titleUpdate["overlayText21Written"])
+
+			elif (titleUpdate["overlayText21Written"] != ReplaceVariables(settings["overlayText23"])
 				and apiData["inStarcraftLocation"] == "1v1AsCaster"):
 				titleUpdate["overlayText21Written"] = ReplaceVariables(settings["overlayText23"])
-				with open(os.path.join(path, titleUpdate["overlayText21path"]), "w+") as f:
-					f.write(titleUpdate["overlayText21Written"])
+				with codecs.open(os.path.join(path, titleUpdate["overlayText21path"]), encoding='utf-8-sig', mode='w+') as file:
+					file.write(titleUpdate["overlayText21Written"])
 		except:
 			print("No permission to write file in path:", os.path.dirname(os.path.join(path, titleUpdate["overlayText1path"])))
 	return
 
-def GetMmrFromRankedFtw(): #super complicated way of parsing a url
+def GetMmrFromRankedFtw():
 	global variables, settings
+	t0 = time.time()
 	rankedFtwUrl = settings["rankedFtwUrl"]
+
 	try:
 		if rankedFtwUrl == "":
 			return
 
 		teamId = rankedFtwUrl.split("=")[-1]
+		request = json.loads(Parent.GetRequest(rankedFtwUrl, {}))["response"]
 
-		request = urllib2.urlopen(rankedFtwUrl)
 		print("running getting mmr function")
-		contentList = request.read().split("\n")
+		contentList = request.split("\n")
+
 		integers = [str(x) for x in range(10)]
 		grabNextNumber = False
 		thisTeam = False
@@ -333,14 +349,57 @@ def GetMmrFromRankedFtw(): #super complicated way of parsing a url
 						mmr += i
 				variables["$mymmr$"] = mmr
 				print("Successfully obtained mmr:", str(mmr))
+				# Parent.SendTwitchMessage("time required: {}".format(time.time() - t0))
 				return mmr
+	
 
 	except Exception as e:
 		print("Error while grabbing MMR from rankedftw.com:", e)
+
 	return "-1"
+
+def GetMmrFromRankedFtw2():
+	import re
+	global variables, settings
+	t0 = time.time()
+	rankedFtwUrl = settings["rankedFtwUrl"]
+	request = json.loads(Parent.GetRequest(rankedFtwUrl, {}))["response"]
+
+	teamId = rankedFtwUrl.split("=")[-1]
+
+	# Pattern for fetching MMR
+	pattern = re.compile(r"""<tr onclick="window\.location='\/team\/""" + str(teamId) + r"""\/';".*?>.*?<td class="player">.*?<\/td><td class="number">([0-9]+)<\/td>(:?<td class="number">[0-9\.%]+\S*?<\/td>){6}<\/tr>""")
+
+	# Normalize response - it simplifies the regex pattern for MMR fetching
+	request = re.sub(r'[\n\t]+|\s{2,}', '', request).lower()
+
+	match = pattern.search(request)
+
+	mmr = match.group(1) if match else ''
+	variables["$mymmr$"] = mmr
+	# Parent.SendTwitchMessage("time required: {}".format(time.time() - t0))
 
 #---------------------------------------
 #	[Required] Execute Data / Process Messages
 #---------------------------------------
 def Execute(data):
 	return
+
+def Unload():
+	global titleUpdate
+	path = os.path.dirname(__file__)
+	for file in ["overlayText1path", "overlayText2path", "overlayText11path", "overlayText21path"]:
+		with codecs.open(os.path.join(path, titleUpdate[file]), encoding='utf-8-sig', mode='w+') as file:
+			file.write(" ")
+	return
+
+
+def OpenClientIDLink():
+	os.startfile("https://www.twitch.tv/kraken/oauth2/clients/new")
+
+def OpenOauthLink():
+	os.startfile("https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=" + settings["clientID"] + "&redirect_uri=http://localhost&scope=channel_editor&scope=user_read+channel_editor")
+
+def Debug(message):
+	if debuggingMode:
+		Parent.Log("TitleUpd", message)

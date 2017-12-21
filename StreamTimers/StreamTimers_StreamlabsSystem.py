@@ -19,7 +19,7 @@ ScriptName = "StreamTimers"
 Website = "http://www.brains-world.eu"
 Description = "Uptime & Countdown with UI Interface"
 Creator = "Brain"
-Version = "1.1.0"
+Version = "1.1.1"
 
 configFile = "settings.json"
 path = os.path.dirname(__file__)

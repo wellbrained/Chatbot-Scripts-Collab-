@@ -1,7 +1,7 @@
 ﻿var settings = {
-  "cdInterval": 6.0,
+  "cdInterval": 4,
   "cdTimeFormat": "$mm$:$ss$",
-  "cdCustomText": "Starting soon",
+  "cdCustomText": "Starting soon™",
   "cbCustomUptimeText": true,
   "customUptimeText": "$h$:$mm$:$ss$",
   "maxSleepTimer": 10.0,

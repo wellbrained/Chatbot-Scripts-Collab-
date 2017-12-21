@@ -13,21 +13,21 @@
         "type": "textbox",
         "value": "",
         "label": "Scene - In Menu",
-        "tooltip": "Scene which activates when you're in the Menu.",
+        "tooltip": "Scene which activates when you're in the Menu.\r\nLeave this field empty if you don't want the script to automatically switch to this scene.",
         "group": ""
     },
     "obsSceneInGame": {
         "type": "textbox",
         "value": "",
         "label": "Scene - In Game",
-        "tooltip": "Scene which activates when you're ingame.",
+        "tooltip": "Scene which activates when you're ingame.\r\nLeave this field empty if you don't want the script to automatically switch to this scene.",
         "group": ""
     },
     "obsSceneInReplay": {
         "type": "textbox",
         "value": "",
         "label": "Scene - In Replay",
-        "tooltip": "Scene which activates when you are in a Replay.",
+        "tooltip": "Scene which activates when you are in a Replay.\r\nLeave this field empty if you don't want the script to automatically switch to this scene.",
         "group": ""
     },
     "isCasterModeEnabled": {
@@ -41,14 +41,21 @@
         "type": "textbox",
         "value": "",
         "label": "Casting - In Menu",
-        "tooltip": "Scene which activates when you're in menu as caster.",
+        "tooltip": "Scene which activates when you're in menu as caster.\r\nLeave this field empty if you don't want the script to automatically switch to this scene.",
         "group": ""
     },
     "obsSceneCasterInGame": {
         "type": "textbox",
         "value": "",
         "label": "Casting - In Game",
-        "tooltip": "Scene which activates when you're in game as caster.",
+        "tooltip": "Scene which activates when you're in game as caster.\r\nLeave this field empty if you don't want the script to automatically switch to this scene.",
+        "group": ""
+    },
+    "obsSceneCasterInReplay": {
+        "type": "textbox",
+        "value": "",
+        "label": "Casting - In Replay",
+        "tooltip": "Scene which activates when you're in a replay as caster.\r\nLeave this field empty if you don't want the script to automatically switch to this scene.",
         "group": ""
     },
 }

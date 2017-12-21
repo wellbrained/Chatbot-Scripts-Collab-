@@ -1,7 +1,7 @@
-# AnkhBot Scripts
-Scripts for the streaming bot Ankhbot
+# Streamlabs Chatbot Scripts (Formerly AnkhBot)
+Scripts for the Streamlabs Chatbot to interact with your community on streaming platforms.
 
-You can find more infos and download it here: http://www.ankhbot.com
+You can find more infos and download it here: https://streamlabs.com/chatbot
 
 ## General scripts
 - StreamTimers
@@ -9,6 +9,9 @@ You can find more infos and download it here: http://www.ankhbot.com
 
 - Game "Slots"
 > Adds a slotmachine chat-game which will be played with emotes
+
+- TTSAnnouncer
+> Reads messages out loud from chat (Text-to-Speech). Has costs, multiple languages, settings and filters. 
 
 ## StarCraft 2 scripts
 - SceneSwitcher
