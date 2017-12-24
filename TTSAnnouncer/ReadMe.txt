@@ -44,6 +44,9 @@ Tip:
 Version History
 ###############
 
+1.0.2
+  ~ Fix when black word filter is empty
+
 1.0.1:
   ~ First Release version
 
