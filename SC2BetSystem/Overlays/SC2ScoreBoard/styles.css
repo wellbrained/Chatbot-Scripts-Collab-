@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+* { 
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+body {
+  margin: 0;
+  padding: 0;
+  
+  font-family: 'Space Mono', monospace;
+  /* font-family: 'Barlow', sans-serif; */
+  text-transform: uppercase;
+  color: #fff;
+}
+#container {
+  background: url(http://i.imgur.com/gSZIXP0.png) no-repeat;
+  width: 719px;
+  height: 68px;
+  
+  margin: 0 auto;
+  text-align: center;
+  
+  position: relative;
+  top: -75px;
+  left: 0;
+}
+
+#p1, #p2, #vsColumn {
+  float: left;
+}
+#p1, #p2 {
+  width: 46%;
+}
+#vsColumn {
+  width: 57px;
+  height: 80px;
+  padding: 0 8px;
+  font-size: 50px;
+  
+  background-color: #011935;
+  border: 2px solid #387fd1;
+  
+  margin-top: -2px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* LEFT SIDE */
+#p1 .playerBets, #player1, #p1Name, #player1 .race {
+  float: left;
+}
+.playerBets {
+  width: 90px;
+  height: 68px;
+  font-size: 19px;
+  line-height: 22px;
+  margin-top: 5px;
+}
+#p1 .playerBets {
+  text-align: left;
+  padding-left: 10px;
+}
+#p2 .playerBets {
+  text-align: right;
+  padding-right: 8px;
+}
+#p1Label, #p1Betbox {
+  width: 100%;
+}
+#player1 {
+  font-size: 14px;
+  padding: 10px 0 0 10px;
+  width: 240px;
+  height: 68px;
+}
+#p1Name {
+  float: left;
+  width: 230px;
+  padding-top: 3px;
+  font-size: 22px;
+  z-index: 2;
+  color: #fff;
+}
+
+/* RIGHT SIDE */
+#p2 .playerBets, #player2, #p2Name, #player2 .race {
+  float: left;
+}
+#player2 {
+  font-size: 14px;
+  padding: 10px 0 0 10px;
+  width: 240px;
+  height: 68px;
+}
+#p2Name {
+  float: left;  
+  width: 230px;
+  padding-top: 3px;
+  font-size: 22px;
+  z-index: 2;
+  color: #fff;
+}
+#p2Label, #p2Betbox {
+  width: 100%;
+}
+
+.race {
+  position: relative;
+  overflow: hidden;
+}
+.terran:before, .zerg:before, .protoss:before, .random:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.4;
+}
+.zerg:before {
+  background: url("http://i.imgur.com/31bj6gb.png") no-repeat;
+  background-size: 30%;
+}
+#p1 .zerg:before {
+  background-position: 0% 0%;
+}
+#p2 .zerg:before {
+  background-position: 100% 0%;
+}
+.terran:before {
+  background: url("http://i.imgur.com/o8klniC.png") no-repeat;
+  background-size: 30%;
+}
+#p1 .terran:before {
+  background-position: 0 0%;
+}
+#p2 .terran:before {
+  background-position: 100% 100%;
+}
+.protoss:before {
+  background: url("http://i.imgur.com/PYNqvUP.png") no-repeat;
+  background-size: 30%;
+}
+#p1 .protoss:before {
+  background-position: -5% 30%;
+}
+#p2 .protoss:before {
+  background-position: 100% 30%;
+}
+.random:before {
+  background: url("http://i.imgur.com/6S4aLLA.png") no-repeat;
+  background-size: 30%;
+}
+#p1 .random:before {
+  background-position: -5% 30%;
+}
+#p2 .random:before {
+  background-position: 100% 30%;
+}
+
+.winner {
+  color: #fff;
+  text-shadow: 1px 1px 10px #efe9e7, 1px 1px 10px #26ccff;
+}
