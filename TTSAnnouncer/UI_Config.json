@@ -1,6 +1,5 @@
 ﻿{
     "output_file": "TTSAnnouncer.json",
-
     "clearQueue": {
         "type": "button",
         "label": "Clear TTS Queue",
@@ -21,19 +20,46 @@
         "label": "Min Power Level",
         "value": "Everyone",
         "tooltip": "Minimum power level required to be able to trigger Text-To-Speech.",
-        "items": ["Everyone", "Regular", "Sub", "Mod", "Streamer"],
+        "items": [
+            "Everyone",
+            "Regular",
+            "Sub",
+            "Mod",
+            "Streamer"
+        ],
         "group": ""
     },
     "userPointsCost": {
-        "type": "slider",
+        "type": "numberbox",
         "value": 10,
-        "min": 0,
-        "max": 500,
-        "ticks": 10,
-        "label": "Cost to trigger TTS",
+        "label": "Cost to use",
         "tooltip": "How many points will be subtracted when a user uses the TTS command.",
         "group": ""
-    },   
+    },
+    "defaultVoice": {
+        "type": "dropdown",
+        "label": "Default Voice",
+        "value": "US English Female",
+        "tooltip": "In case you only selected one language you can use your command with the sentence behind it (e.g. !tts Hello World).\r\nIf you select multiple languages you need to add the language key after the command (e.g. !ttsde Hallo Welt or !ttsen Hello World)",
+        "items": [
+            "Chinese Female",
+            "Deutsch Female",
+            "Dutch Female",
+            "French Female",
+            "Italian Female",
+            "Japanese Female",
+            "Korean Female",
+            "Polish Female",
+            "Portuguese Female",
+            "Russian Female",
+            "Spanish Female",
+            "Swedish Female",
+            "Turkish Female",
+            "UK English Female",
+            "US English Female"
+        ],
+        "group": ""
+    },
     "userCooldown": {
         "type": "slider",
         "value": 30,
@@ -74,30 +100,6 @@
         "tooltip": "How many total TTS queues are allowed to be active.",
         "group": ""
     },
-    "defaultVoice": {
-        "type": "dropdown",
-        "label": "Default Voice",
-        "value": "US English Female",
-        "tooltip": "In case you only selected one language you can use your command with the sentence behind it (e.g. !tts Hello World).\r\nIf you select multiple languages you need to add the language key after the command (e.g. !ttsde Hallo Welt or !ttsen Hello World)",
-        "items": [
-            "Chinese Female",
-            "Deutsch Female",
-            "Dutch Female",
-            "French Female",
-            "Italian Female",
-            "Japanese Female",
-            "Korean Female",
-            "Polish Female",
-            "Portuguese Female",
-            "Russian Female",
-            "Spanish Female",
-            "Swedish Female",
-            "Turkish Female",
-            "UK English Female", 
-            "US English Female",
-        ],
-        "group": ""
-    },
     "userMaxMessageLength": {
         "type": "slider",
         "value": 270,
@@ -106,7 +108,7 @@
         "ticks": 10,
         "label": "TTS Message Length",
         "tooltip": "How many characters are allowed per TTS message?",
-        "group": ""
+        "group": "Length, Volume, Help and Blacklist"
     },
     "volume": {
         "type": "slider",
@@ -116,21 +118,21 @@
         "ticks": 1,
         "label": "Audio Volume",
         "tooltip": "Volume of the announcer for the TTS message",
-        "group": ""
+        "group": "Length, Volume, Help and Blacklist"
     },
     "helpCommand": {
         "type": "textbox",
         "value": "!ttshelp",
         "label": "Help Command",
         "tooltip": "Lists all the enabled languages in chat.",
-        "group": ""
+        "group": "Length, Volume, Help and Blacklist"
     },
     "blackWordFilter": {
         "type": "textbox",
         "value": "Trump, Nigger, Jew, Nazi, Nigga, Faggot",
         "label": "Black List",
         "tooltip": "List of words you want to get filtered seperated through commas.\r\nAdditionally the message will be purged.",
-        "group": ""
+        "group": "Length, Volume, Help and Blacklist"
     },
     "languagezh": {
         "type": "checkbox",
@@ -293,19 +295,20 @@
         "tooltip": "Error message in chat when the user reached the global limit of messages.",
         "group": "Error Responses"
     },
-    "randomKey": {
-        "type": "textbox",
-        "value": "",
-        "label": "Unique Key",
-        "tooltip": "This acts as a \"secret key\" to trigger your TTS messages.\r\nIf you notice that a TTS goes off that wasn't triggered in your channel, change your key!\r\nIt means that someone else is using this key (on purpose or accidently) to trigger messages in your stream.\r\nSo make sure your key is unique!",
-        "group": "Unique Key (Hidden)"
-    },
-    "btnGoToOauth": {
+    "btnOpenWebsiteNewKey": {
         "type": "button",
-        "label": "TTS Website",
-        "tooltip": "Opens a tab in your default browser that directs you to your browser source URL and where you can get your unique key from.",
-        "function": "openTtsWebsite",
+        "label": "Open the link in my browser",
+        "tooltip": "Opens a tab in your default browser with the link for the BrowserSource.",
+        "function": "OpenWebsiteForBrowserSource",
         "wsevent": "",
-        "group": "Unique Key (Hidden)"
+        "group": "Get a link for your Browser Source"
+    },
+    "btnWhisperNewKey": {
+        "type": "button",
+        "label": "Whisper me the link per Twitch",
+        "tooltip": "Your bot will whisper you the link for the BrowserSource.\r\nIMPORTANT: This will only work if you have a seperate twitch account for your bot! If you don't have seperate ones - use the button above!",
+        "function": "GenerateAndWhisperKey",
+        "wsevent": "",
+        "group": "Get a link for your Browser Source"
     }
 }

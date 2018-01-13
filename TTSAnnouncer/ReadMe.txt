@@ -1,12 +1,12 @@
 #################
 Info
 #################
-
 Description: Text-to-Speech Announcer
 Created by: 
 Brain - www.twitch.tv/wellbrained
 Burny - www.twitch.tv/burnysc2
-Version: 1.0.1
+Version: 1.0.5
+
 
 ################
 Usage
@@ -27,14 +27,10 @@ Go back to the `Scripts` tab in Chatbot and rightclick the background and click 
 Afterwards the list of installed scripts should appear and you can start configuring those.
 
 
-To get the script working:
-
-After loading the script in StreamlabsBot, go to 
-https://warp.world/scripts/tts-message
-
-In the field "Browser Source:" (e.g. http://tts.warp.world:5500/tts/uJEtMSRyrS2qjLn/burnysc2 ) is your key (here: "uJEtMSRyrS2qjLn") - copy it to the field "Unique Key" in the TTS-Queue Script.
-Caution: If your key is visible on stream, it may cause people to spam TTS (without using !tts <text> in chat). Simply generate a new "Unique Key" to fix this.
-Open OBS and add a new browser source with the URL same as the one gathered from "Browser Source:"
+To get the script working just go to the menu "Get a link for your Browser Source" and click a button for a method you'd like to use.
+The first button simply opens a tab in your default browser where you can use the URL there to use as your browser source link in the OBS source.
+The second button let's your bot whisper your streamer account the link per Twitch. 
+Important Notice: However this doesn't work if the streamer account is used also as bot account or if neither is connected!
 
 Tip:
 - If you don't want TTS Queue to be active in specific scenes, edit the TTS browser source scene in OBS and check "Shutdown source when not visible". Now, TTS won't be working in scenes where you don't have the TTS browser source active.
@@ -43,9 +39,21 @@ Tip:
 ###############
 Version History
 ###############
+1.0.5:
+  ~ Fixed a bug where the unique key file didn't load correctly
 
-1.0.2
-  ~ Fix when black word filter is empty
+1.0.4:
+  ~ Added two buttons to generate your OBS Browser Source link
+  ~ Removed Unique Keys
+  ~ Reorganised the sidebar (UI_config)
+
+1.0.3:
+  ~ Change "Point Cost" to numberfield instead of slider
+  ~ Bugfix response when user has not enough points
+
+1.0.2:
+  ~ Fixed a bug where an error occurs without saving first. 
+  ~ Fixed a bug which happens when you leave the blacklist empty.
 
 1.0.1:
   ~ First Release version

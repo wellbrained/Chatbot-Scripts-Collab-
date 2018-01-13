@@ -10,6 +10,8 @@ import os
 import json
 import cgi
 import codecs
+import os
+
 
 #---------------------------------------
 #	[Required]	Script Information
@@ -17,9 +19,8 @@ import codecs
 ScriptName = "TTS Announcer"
 Website = "https://burnysc2.github.io"
 Creator = "Brain & Burny"
-Version = "1.0.2"
+Version = "1.0.5"
 Description = "Text-to-Speech Announcer"
-# Description = "Uses https://warp.world/scripts/tts-message to generate text-to-speech.\n\rSince there is no option to queue TTS commands, I made a script for it."
 
 #---------------------------------------
 #	Set Variables
@@ -53,6 +54,9 @@ tts = {
 	"timeUntilReady": 0,
 	"timeOfLastTick": time.time(),
 	"globalCooldownUntil": 1,
+	"generateKeyButtonClicked": 0,
+	"pathUniqueKey": os.path.join(os.path.dirname(__file__), "uniqueKey.json"),
+	"uniqueKey": "",
 }
 
 # https://warp.world/scripts/tts-message
@@ -115,7 +119,7 @@ voices = {  # https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
 
 def Init():
-	global settings, voices, responseVariables, convertPowerLevelToInt
+	global settings, voices, responseVariables, convertPowerLevelToInt, tts
 	path = os.path.dirname(__file__)
 
 	try:
@@ -131,7 +135,7 @@ def Init():
 			"playAlert": "false",
 		})
 		voices[""] = settings["defaultVoice"]
-		settings["randomKey"] = settings["randomKey"].strip() #removes whitespace left and right
+		# settings["randomKey"] = settings["randomKey"].strip() #removes whitespace left and right
 		settings["powerLevelInt"] = convertPowerLevelToInt[settings["minPowerLevel"]]
 		settings["volume"] = int(settings.get("volume", 25))
 		settings["blackWordFilter"] = settings["blackWordFilter"].replace(" ","").split(",")
@@ -156,6 +160,13 @@ def Init():
 		responseVariables["$helpCommand"] = settings["helpCommand"]
 		settings["settingsLoaded"] = True
 	except: 
+		pass
+
+	try:
+		with codecs.open(tts["pathUniqueKey"], encoding='utf-8-sig', mode='r') as file:
+			tts["uniqueKey"] = json.load(file)["uniqueKey"]
+	except: 
+		tts["uniqueKey"] = ""
 		pass
 		
 	return
@@ -221,7 +232,7 @@ def Execute(data):
 					return
 
 				# unique key not available
-				if settings["randomKey"] == "":
+				if tts["uniqueKey"] == "":
 					SendMessage(settings["responseKeyMissing"])
 					return
 
@@ -257,7 +268,7 @@ def Execute(data):
 
 				# if user doesnt have enough points
 				if Parent.GetPoints(data.User) < settings["userPointsCost"]:
-					SendMessage(settings["responseGloballyTooManyInQueue"])
+					SendMessage(settings["responseUserNotEnoughPoints"])
 					return
 				
 				# try to find voice
@@ -286,7 +297,7 @@ def Execute(data):
 					# "message": " ".join(data.Message.split(" ")[1:]).replace(" ", "\%20"),
 				})
 				
-				Parent.Log("TTS Announcer", "Success! Message: {}".format(" ".join(data.Message.split(" ")[1:]).replace(" ", "%20")))
+				Parent.Log("TTS Announcer", "Success! Message: {}".format(" ".join(data.Message.split(" ")[1:]))) #.replace(" ", "%20")))
 	return
 
 #---------------------------------------
@@ -300,10 +311,11 @@ def Tick():
 		if tts["timeUntilReady"] < 0:
 			if len(tts["queue"]) > 0:
 				current = tts["queue"].pop(0)
-				if len(current["message"]) != "":
-					Parent.GetRequest("https://warp.world/scripts/tts-message?streamer={0}&key={1}&viewer={2}&bar={3}&font={4}&sfont={5}&bfont={6}&gfont={7}&voice={8}&vol={9}&alert=false&message={10}".format(\
-						Parent.GetChannelName(), settings["randomKey"], current["user"], settings["messageColor"], settings["fontColor"], settings["fontSize"], settings["fontOutlineColor"],\
-						settings["googleFont"], current["voice"], str(settings["volume"]), cgi.escape(current["message"])), {})
+				if len(current["message"]) != "" and tts["uniqueKey"] != "":
+					response = Parent.GetRequest("https://warp.world/scripts/tts-message?streamer={0}&key={1}&viewer={2}&bar={3}&font={4}&sfont={5}&bfont={6}&gfont={7}&voice={8}&vol={9}&alert=false&message={10}".format(\
+						Parent.GetChannelName(), tts["uniqueKey"], current["user"], settings["messageColor"], settings["fontColor"], settings["fontSize"], settings["fontOutlineColor"],\
+						settings["googleFont"], cgi.escape(current["voice"]), str(settings["volume"]), cgi.escape(current["message"])), {})
+					# Parent.Log("TTS Announcer", "Logging: {}".format(cgi.escape(current["message"])))
 				tts["timeUntilReady"] = len(current["message"]) / 8
 
 		else:
@@ -320,13 +332,39 @@ def ClearQueue():
 	tts["queue"] = []
 	tts["timeUntilReady"] = 0
 
+def GenerateAndWhisperKey():
+	global tts
+	if time.time() - tts["generateKeyButtonClicked"] > 10:
+		tts["generateKeyButtonClicked"] = time.time()
+		response = json.loads(Parent.GetRequest("https://warp.world/scripts/tts-user?streamer=" + Parent.GetChannelName(), {}))
+		if response["status"] == 200:
+			newLink = response["response"]
+			# Parent.Log("TTS", "response: {}".format(newLink))
+			key = newLink.split("/")[-2]
+			tts["uniqueKey"] = key
+			with codecs.open(tts["pathUniqueKey"], encoding='utf-8-sig', mode='w+') as file:
+				json.dump({"uniqueKey": key}, file)
+			# Parent.Log("TTS", "key: {}".format(key))
+			Parent.SendTwitchWhisper(Parent.GetChannelName(), "OBS Browser Source URL: {}".format(newLink))
+
+
+def OpenWebsiteForBrowserSource():
+	global tts
+	if time.time() - tts["generateKeyButtonClicked"] > 10:
+		tts["generateKeyButtonClicked"] = time.time()
+		response = json.loads(Parent.GetRequest("https://warp.world/scripts/tts-user?streamer=" + Parent.GetChannelName(), {}))
+		if response["status"] == 200:
+			newLink = response["response"]
+			key = newLink.split("/")[-2]
+			tts["uniqueKey"] = key
+			with codecs.open(tts["pathUniqueKey"], encoding='utf-8-sig', mode='w+') as file:
+				json.dump({"uniqueKey": key}, file)				
+			os.startfile(newLink)
+
 #---------------------------------------
 #	Helper Functinos
-#---------------------------------------
-
-def openTtsWebsite():
-	os.startfile("https://warp.world/scripts/tts-message")
-
+#--------------------------------------
+		
 def ConvertDatetimeToEpoch(datetimeObject=datetime.datetime.now()):
 	# converts a datetime object to seconds in python 2.7
 	return time.mktime(datetimeObject.timetuple())
