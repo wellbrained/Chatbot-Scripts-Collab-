@@ -1,0 +1,63 @@
+﻿{
+    "output_file": "settings.json",
+
+    "openReadMe": {
+        "type": "button",
+        "label": "Open Readme.txt",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+        "group": ""
+    },
+    "btnOpenLogfile": {
+        "type": "button",
+        "label": "Open Logfile.txt",
+        "tooltip": "Opens the 'Logfile.txt' when you enabled this option and checked the versions once.",
+        "function": "OpenLogfile",
+        "wsevent": "",
+        "group": ""
+    },
+    "cbShowInLog": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Notifications per Chatbot Log",
+        "tooltip": "If you want the bot to write in the Log (under Scripts).",
+        "group": ""
+    },
+    "cbWriteInLogfile": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Notifications in a Logfile.txt",
+        "tooltip": "If you want the bot to write in the 'Logfile.txt' in the 'UpdateNotifier' folder.",
+        "group": ""
+    },
+    "cbSendAsChatMsg": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Notifications per Twitch Chat",
+        "tooltip": "If you want the bot to write in the Twitch chat.",
+        "group": ""
+    },
+    "cbSendAsWhisper": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Notifications per Twitch Whisper",
+        "tooltip": "If you want the bot to write you per whisper message on Twitch.",
+        "group": ""
+    },
+    "cbNotifyOnSuccess": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Notify me on success",
+        "tooltip": "If you want a response message even when no changes exists",
+        "group": ""
+    },
+    "btnCheckVersions": {
+        "type": "button",
+        "label": "Check script versions",
+        "tooltip": "Checks the versions of your scripts.",
+        "function": "CheckScripts",
+        "wsevent": "",
+        "group": ""
+    }
+}

@@ -1,0 +1,52 @@
+﻿{
+    "Bet Overlay": {
+        "Name": "Bet Overlay", 
+        "Version": "1.0.0", 
+        "Website": "https://www.brains-world.eu"
+    }, 
+    "Game - Slots": {
+        "Name": "Game - Slots", 
+        "Version": "1.1.4", 
+        "Website": "http://www.brains-world.eu"
+    }, 
+    "New Song Announcer": {
+        "Name": "New Song Announcer", 
+        "Version": "1.3.2.0", 
+        "Website": "http://www.twitch.tv/ocgineer"
+    }, 
+    "Rank Change Announcer": {
+        "Name": "Rank Change Announcer", 
+        "Version": "1.2.0", 
+        "Website": "https://www.github.com/hyperneon"
+    }, 
+    "SCII - Betting System": {
+        "Name": "SCII - Betting System", 
+        "Version": "1.2.0", 
+        "Website": "https://www.brains-world.eu"
+    }, 
+    "SCII - Scene Switcher": {
+        "Name": "SCII - Scene Switcher", 
+        "Version": "1.0.2", 
+        "Website": "https://www.brains-world.eu"
+    }, 
+    "SCII - Title Updater": {
+        "Name": "SCII - Title Updater", 
+        "Version": "1.0.2", 
+        "Website": "https://www.brains-world.eu"
+    }, 
+    "StreamTimers": {
+        "Name": "StreamTimers", 
+        "Version": "1.1.2", 
+        "Website": "http://www.brains-world.eu"
+    }, 
+    "TTS Announcer": {
+        "Name": "TTS Announcer", 
+        "Version": "1.0.5", 
+        "Website": "https://burnysc2.github.io"
+    }, 
+    "Update Notifier": {
+        "Name": "Update Notifier", 
+        "Version": "1.0.0", 
+        "Website": "http://www.brains-world.eu"
+    }
+}
