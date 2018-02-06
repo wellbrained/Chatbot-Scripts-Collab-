@@ -42,7 +42,6 @@ if (window.WebSocket) {
 			if (jsonObject.event == "EVENT_INIT_THEME") {
 				SetThemeForOverlay(JSON.parse(jsonObject.data).themeName);
 			} else {
-				
 				console.log("No theme selected.");
 			}
 		};

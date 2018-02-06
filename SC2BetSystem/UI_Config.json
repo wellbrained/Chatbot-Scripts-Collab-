@@ -1,8 +1,17 @@
 ﻿{
     "output_file": "SC2BetSystemConfig.json", 
+    "openReadMe": {
+        "type": "button",
+        "label": "Open Readme.txt",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+        "group": ""
+    },
     "overlayThemeNames": {
         "type": "dropdown", 
         "items": [
+            "GSL", 
             "SC2Board", 
             "SC2ScoreBoard"
         ], 
@@ -68,21 +77,21 @@
     "cmdBetWin": {
         "type": "textbox", 
         "value": "#win", 
-        "label": "Command to bet/vote for the streamer", 
+        "label": "Command to bet/vote for a win", 
         "tooltip": "Command for viewers to bet on the streamer.\r\nExample: #win", 
         "group": "Cost & Commands"
     }, 
     "cmdBetLose": {
         "type": "textbox", 
         "value": "#lose", 
-        "label": "Command to bet/vote against the streamer", 
+        "label": "Command to bet/vote for a loss", 
         "tooltip": "Command for viewers to bet against the streamer.\r\nExample: #lose", 
         "group": "Cost & Commands"
     }, 
     "cmdAbort": {
         "type": "textbox", 
         "value": "#abort", 
-        "label": "Command to abort the current bet (Refunds participants)", 
+        "label": "Command to abort and refund", 
         "tooltip": "Command for the streamer to abort the current bet.\r\nExample: #abort", 
         "group": "Cost & Commands"
     }, 
@@ -96,7 +105,7 @@
     "noBetsOnlyVotes": {
         "type": "checkbox", 
         "value": false, 
-        "label": "Change Betting to Voting system (without currency)", 
+        "label": "Change Betting to Voting system (w/o currency)", 
         "tooltip": "This option replaces the betting system with a voting system (no currency).\r\nIMPORTANT: Don't forget to adjust the response messages and overlay labels accordingly.", 
         "group": "Voting System"
     }, 
@@ -116,7 +125,7 @@
     }, 
     "overlayTitle": {
         "type": "textbox", 
-        "value": "Who will win?", 
+        "value": "WHO WILL WIN?", 
         "label": "Title", 
         "tooltip": "Set the title for the overlay.", 
         "group": "Overlay Settings"
@@ -130,29 +139,29 @@
     }, 
     "overlayChatCmdWin": {
         "type": "textbox", 
-        "value": "$cmdBetWin <Amount>", 
-        "label": "HowTo Example: Chat command to bet on streamer (max 20)", 
+        "value": "$cmdBetWin [Amount]", 
+        "label": "Example command to bet on win (max 20)", 
         "tooltip": "Example text for people to see how to bet on the streamer.\r\nE.g. for betting you can put \"$cmdBetWin {Amount}\"\r\nE.g. for voting system you can just put \"$cmdBetWin\"", 
         "group": "Overlay Settings"
     }, 
     "overlayChatCmdLose": {
         "type": "textbox", 
-        "value": "$cmdBetLose <Amount>", 
-        "label": "HowTo Example: Chat command to bet against streamer (max 20)", 
+        "value": "$cmdBetLose [Amount]", 
+        "label": "Example command to bet on loss (max 20)", 
         "tooltip": "Example text for people to see how to bet against the streamer.\r\nE.g. for betting you can put \"$cmdBetLose {Amount}\"\r\nE.g. for voting system you can just put \"$cmdBetLose\"", 
         "group": "Overlay Settings"
     }, 
     "overlayLabelWin": {
         "type": "textbox", 
         "value": "Total amount $cmdBetWin", 
-        "label": "Label - Total amount of points on Streamer (max 24 digits)", 
+        "label": "Total points on win (max 24 digits)", 
         "tooltip": "Text which gets displayed next to the total amount of points bet on the streamer.", 
         "group": "Overlay Settings"
     }, 
     "overlayLabelLose": {
         "type": "textbox", 
         "value": "Total amount $cmdBetLose", 
-        "label": "Label - Total amount of points against Streamer (max 24 digits)", 
+        "label": "Total points on loss (max 24 digits)", 
         "tooltip": "Text which gets displayed next to the total amount of points bet against the streamer.", 
         "group": "Overlay Settings"
     }, 
@@ -178,6 +187,13 @@
         "value": false, 
         "label": "Display percentages", 
         "tooltip": "This option changes the overlay to display percentages instead of absolute numbers\r\ne.g. for voting, it will now show 75% voted on the player and 25% on the opponent", 
+        "group": "Overlay Settings"
+    }, 
+    "capitalizeNames": {
+        "type": "checkbox", 
+        "value": true, 
+        "label": "Capitalize all Names", 
+        "tooltip": "This option decides if you want to capitalize all the names in the overlays.", 
         "group": "Overlay Settings"
     }, 
     "bnetUsername1": {
@@ -347,7 +363,14 @@
         "label": "Show Overlay all the time", 
         "tooltip": "Enable this if you want to keep the overlay visible to adjust it for stream.", 
         "group": "Configure Options (For Setup not live usage)"
-    },
+    }, 
+    "devDebugLogging": {
+        "type": "checkbox", 
+        "value": false, 
+        "label": "Log Errors", 
+        "tooltip": "Logs errors to file and to Streamlabs Chatbot Script-Log", 
+        "group": "Configure Options (For Setup not live usage)"
+    }, 
     "btnTestOverlay": {
         "type": "button", 
         "label": "Run a demo Bet (Overlay only)", 

@@ -12,19 +12,19 @@ body {
 }
 /* width: 559px height: 275 */
 #container {
-  background: url(http://i.imgur.com/87gmyqb.png) no-repeat;
+  position: relative;
+  top: 650;
+  left: 0;
+  
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2board/background.png) no-repeat;
   width: 645px;
   height: 316px;
   
   padding: 35px;
-  position: relative;
-  top: 0;
-  left: 0;
-  opacity: 0;
   
   font-family: 'Space Mono', monospace;
-  text-transform: uppercase;
   color: #fff;
+  opacity: 0;
 }
 #header {
   width: 100%;
@@ -61,7 +61,7 @@ h1 {
   float: left;
 }
 #player1, #player2 {
-  background: url(http://i.imgur.com/YbyLwUs.png) no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2board/player-bg.png) no-repeat;
   width: 257px;
   height: 61px;
   margin-top: 10px;
@@ -74,7 +74,7 @@ h1 {
   width: 210px;
 }
 .winner {
-  background: url(http://i.imgur.com/HrOBpCj.png) no-repeat !important;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2board/winner-bg.png) no-repeat !important;
 }
 .race {
   width: 32px;
@@ -89,21 +89,24 @@ h1 {
   margin-left: 15px;
 }
 .zerg {
-  background: url(http://i.imgur.com/gmGJnoV.png) no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2board/zerg.png) no-repeat;
+  background-size: 28px;
 }
 .terran {
-  background: url(http://i.imgur.com/FoRMvMH.png) no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2board/terran.png) no-repeat;
+  background-size: 28px;
 }
 .protoss {
-  background: url(http://i.imgur.com/S7pa2di.png) no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2board/protoss.png) no-repeat;
+  background-size: 28px;
 }
 .random {
-  background: url(http://i.imgur.com/xlY0kSz.png) no-repeat;
-  background-size: 24px;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2board/random.png) no-repeat;
+  background-size: 28px;
 }
 .playerBets {
   padding-top: 17px;
-  line-height: 38px;
+  line-height: 40px;
 }
 .playerBets span {
   width: 100px;
@@ -117,13 +120,13 @@ h1 {
   overflow: hidden;
 }
 .playerBets div {
-  background: url(http://i.imgur.com/CiOxfMf.png) no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2board/bets-bg.png) no-repeat;
   width: 144px;
   height: 41px;
   text-align: center;
-}
-.playerBets div.betWinner {
-  background: url(http://i.imgur.com/6NnRNbX.png) no-repeat;
+} 
+.betWinner {
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2board/bets-winner-bg.png) no-repeat !important;
 }
 #p1 .playerBets div {
   float: right;

@@ -20,15 +20,16 @@ from collections import OrderedDict
 import threading
 import clr
 import codecs
+import logging
 
 #---------------------------------------
 #	[Required]	Script Information
 #---------------------------------------
 ScriptName = "SCII - Betting System"
-Website = "https://www.brains-world.eu"
+Website = "http://www.brains-world.eu"
 Description = "Automatic Betting System for StarCraft II"
 Creator = "Brain & Burny"
-Version = "1.2.0"
+Version = "1.2.3"
 
 #---------------------------------------
 #	Set Variables
@@ -59,7 +60,8 @@ bets = {
 	"recentlyJoinedUsers": [],
 	"noBetsOnlyVotes": False,
 	"duplicateNamesFound": False,
-	"isPercentageBased": False
+	"isPercentageBased": False,
+	"capitalizeNames": True
 }
 raceLongName = {
 	"Z": "zerg",
@@ -68,6 +70,11 @@ raceLongName = {
 	"R": "random",
 }
 
+def OpenReadMe():
+    """Open the readme.txt in the scripts folder"""
+    location = os.path.join(os.path.dirname(__file__), "README.txt")
+    os.startfile(location)
+    return
 #---------------------------------------
 #	[Required] Intialize Data (Only called on Load)
 #---------------------------------------
@@ -87,6 +94,27 @@ def Init():
 	except Exception as e:
 		#Debug("Error: {}".format(e))
 		return
+
+
+	try:
+		os.makedirs(os.path.join(path, "errorLogs"))
+	except: pass
+	if settings["devDebugLogging"]:		
+		loggingLevel = logging.DEBUG
+		# bets["logger"].debug('debug message')
+		# bets["logger"].info('info message')
+		# bets["logger"].warn('warn message')
+		# bets["logger"].error('error message')
+		# bets["logger"].critical('critical message')
+	else:
+		loggingLevel = logging.INFO
+	logFileName = datetime.datetime.now().strftime('%Y_%m_%d.log')
+	logging.basicConfig(level=loggingLevel,
+				format='%(asctime)s %(levelname)-8s %(message)s',
+				datefmt='%a, %d %b %Y %H:%M:%S',
+				filename=os.path.join(path, "errorLogs", logFileName))
+	bets["logger"] = logging.getLogger('simpleExample')
+	bets["logger"].debug("Logging started")
 	
 	PushData("initThemeData")
 
@@ -131,6 +159,10 @@ def Init():
 		settings["maxBet"] = 9999999999999
 		responseVariables["$maxBet"] = "9999999999999"
 	settings["betChoices"] = [settings["cmdBetWin"].lower(), settings["cmdBetLose"].lower()]
+
+	
+	
+
 	return
 
 #---------------------------------------
@@ -189,9 +221,11 @@ def PushData(eventName):
 			overlayDictionary["lblCurr"] = Parent.GetCurrencyName()
 
 		Parent.BroadcastWsEvent("EVENT_BET_START", json.dumps(overlayDictionary, ensure_ascii=False))
+		bets["logger"].debug("Sent overlay event EVENT_BET_START, data:\n{}".format(json.dumps(overlayDictionary, ensure_ascii=False, indent=4, sort_keys=True)))
 
 	elif eventName == "end":
 		Parent.BroadcastWsEvent("EVENT_BET_END", None)
+		bets["logger"].debug("Sent overlay event EVENT_BET_END")
 	elif eventName == "update":
 		if bets["isPercentageBased"]:
 			totalTemp = max(1, int(bets["totalGambledWin"]) + int(bets["totalGambledLose"]))
@@ -210,20 +244,28 @@ def PushData(eventName):
 		if overlayDictionary["lblCurr"] == "":
 			overlayDictionary["lblCurr"] = Parent.GetCurrencyName()[:8]
 		Parent.BroadcastWsEvent("EVENT_BET_UPDATE", json.dumps(overlayDictionary, ensure_ascii=False))
+		bets["logger"].debug("Sent overlay event EVENT_BET_UPDATE, data:\n{}".format(json.dumps(overlayDictionary, ensure_ascii=False, indent=4, sort_keys=True)))
 
 	elif eventName == "abort":
 		Parent.BroadcastWsEvent("EVENT_BET_ABORT", None)
+		bets["logger"].debug("Sent overlay event EVENT_BET_ABORT")
+
 	elif eventName == "win":
 		Parent.BroadcastWsEvent("EVENT_BET_WIN", None)
+		bets["logger"].debug("Sent overlay event EVENT_BET_WIN")
+
 	elif eventName == "lose":
 		Parent.BroadcastWsEvent("EVENT_BET_LOSE", None)
+		bets["logger"].debug("Sent overlay event EVENT_BET_LOSE")
+
 	elif eventName == "initThemeData":
 		Parent.BroadcastWsEvent("EVENT_INIT_THEME", json.dumps({
 			"themeName": settings["overlayThemeNames"]			
 			}, ensure_ascii=False))
+		bets["logger"].debug("Sent overlay event EVENT_INIT_THEME")
 		if settings["devShowOverlay"]:
 			Parent.BroadcastWsEvent("EVENT_BET_SHOW", None)
-		pass
+			bets["logger"].debug("Sent overlay event EVENT_BET_SHOW")
 	return
 
 #---------------------------------------
@@ -231,7 +273,6 @@ def PushData(eventName):
 #---------------------------------------
 def Execute(data):
 	global settings, bets, responseVariables
-
 	
 	if settings.get("configFileLoaded", False):
 		if data.IsChatMessage():
@@ -349,7 +390,7 @@ def Tick():
 						pass
 
 				elif bets["status"] in ["closed"]:	
-					if apiData["player1Result"] != "undecided" and apiData["inStarcraftLocation"] == "menu":
+					if apiData["player1Result"] != "undecided" and apiData["inStarcraftLocation"] in ["menu", "1v1Replay"]:
 						# paying out the correct bets
 
 						# set local variables
@@ -363,9 +404,11 @@ def Tick():
 						betWinnerCommand = ""
 						if apiData["player1Result"] == "victory":
 							betWinnerCommand = bets["cmdBetWin"].lower()
+							bets["logger"].debug("Streamer lost the game, sending EVENT_BET_WIN")
 							PushData("win")
 						elif apiData["player1Result"] == "defeat":
 							betWinnerCommand = bets["cmdBetLose"].lower()
+							bets["logger"].debug("Streamer lost the game, sending EVENT_BET_LOSE")
 							PushData("lose")
 
 						# paying out viewers/betters who placed a bet or a vote (only if the vote-with-currency was on)
@@ -647,16 +690,17 @@ def TestOverlayThread():
 		"chatCmdLose": tempChatCmdLose[:20],
 		"lblWin": tempLblWin[:24],
 		"lblLose": tempLblLose[:24],
-		"player1": "BrainLangerNameeee"[:15],
+		"player1": "BrainLongNameeeee"[:15],
 		"player2": "Burny"[:15],
 		"race1": "zerg",
-		"race2": "zerg",
+		"race2": "terran",
 		"totalWin": "0",
 		"totalLose": "0",
 		"lblCurr": settings["overlayCurrencyShortName"][:8],
 		"isPercentageBased": settings["isPercentageBased"],
 		"themeName": settings["overlayThemeNames"],
-		"showOverlay": settings["devShowOverlay"]
+		"showOverlay": settings["devShowOverlay"],
+		"capitalizeNames": settings["capitalizeNames"]
 	}
 	if settings["isPercentageBased"]:
 		overlayDictionary["totalWin"] = "50"
@@ -669,7 +713,7 @@ def TestOverlayThread():
 	Parent.BroadcastWsEvent("EVENT_BET_START", json.dumps(overlayDictionary, ensure_ascii=False))
 
 
-	time.sleep(sleepTime)
+	time.sleep(11)
 	# UPDATE - LOSE 
 	if settings["isPercentageBased"]:
 		overlayDictionary = {

@@ -11,11 +11,10 @@ body {
   
   font-family: 'Space Mono', monospace;
   /* font-family: 'Barlow', sans-serif; */
-  text-transform: uppercase;
   color: #fff;
 }
 #container {
-  background: url(http://i.imgur.com/gSZIXP0.png) no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2scoreboard/background.png) no-repeat;
   width: 719px;
   height: 68px;
   
@@ -122,7 +121,7 @@ body {
     opacity: 0.4;
 }
 .zerg:before {
-  background: url("http://i.imgur.com/31bj6gb.png") no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2scoreboard/zerg.png) no-repeat;
   background-size: 30%;
 }
 #p1 .zerg:before {
@@ -132,7 +131,7 @@ body {
   background-position: 100% 0%;
 }
 .terran:before {
-  background: url("http://i.imgur.com/o8klniC.png") no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2scoreboard/terran.png) no-repeat;
   background-size: 30%;
 }
 #p1 .terran:before {
@@ -142,7 +141,7 @@ body {
   background-position: 100% 100%;
 }
 .protoss:before {
-  background: url("http://i.imgur.com/PYNqvUP.png") no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2scoreboard/protoss.png) no-repeat;
   background-size: 30%;
 }
 #p1 .protoss:before {
@@ -152,7 +151,7 @@ body {
   background-position: 100% 30%;
 }
 .random:before {
-  background: url("http://i.imgur.com/6S4aLLA.png") no-repeat;
+  background: url(http://brains-world.eu/chatbot/overlays/betting/sc2scoreboard/random.png) no-repeat;
   background-size: 30%;
 }
 #p1 .random:before {

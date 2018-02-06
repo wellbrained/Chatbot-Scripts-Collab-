@@ -10,7 +10,7 @@
 var settings = {
     // Animation Types for "SCBoard" only: TopDown, BottomUp, LeftRight and RightLeft
     // This is the FadeIn animation
-    fadeInAnimationType: "BottomUp",
+    fadeInAnimationType: "TopDown",
 
     // Adding a time for the animation itself
     animationDuration: 2000

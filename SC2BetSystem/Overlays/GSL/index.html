@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>StarCraft II Bet Overlay</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="../../API_Key.js"></script>
+        <script src="../userSettings.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+    </head>
+    <body>
+      <div id="container">
+          <div id="player1" class="player">
+            <div class="name">
+            </div>
+            <div class="bets"></div>
+          </div>  
+          
+          <div id="vsColumn" class="vs">VS</div>  
+          
+          <div id="player2" class="player"> 
+            <div class="bets"></div>
+            <div class="name">
+            </div>
+          </div>
+          
+          <div id="stats">
+            <div id="stat-left" class="stat">
+              <span></span>
+            </div>
+        
+            <div id="stat-right" class="stat">
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <script src="client.js"></script>
+    </body>
+</html>

@@ -20,9 +20,7 @@ if (window.WebSocket) {
 	var showWinnerForSec = 3000;
 	var setShowWinnerDuration = false;
 	var betHidden = false;
-
-	var player1Race;
-	var player2Race;
+	var streamerWon;
 
 	if (typeof API_Key === "undefined") {
 		$("body").html("ERROR: No API Key found!<br/>Rightclick on the SC2BetSystem script in Chatbot and select \"Insert API Key\"");
@@ -49,7 +47,7 @@ if (window.WebSocket) {
 				]
 			};
 			socket.send(JSON.stringify(auth));
-			console.log("Theme 'SC2ScoreBoard' Connected");
+			console.log("Theme 'GSL' Connected");
 		};
 
 		socket.onmessage = function (message) {
@@ -94,35 +92,24 @@ if (window.WebSocket) {
 		console.log(jsonObject);
 
 		hideOverlayAfterClosing	= jsonObject.hideAfterBetClosed;
-		if (!setShowWinnerDuration) {
-			// Set duration timer for winner
-			setShowWinnerDuration = true;
-			showWinnerForSec = jsonObject.durationShowWinner;
-		}
-
-		player1Race = jsonObject.race1;
-		player2Race = jsonObject.race2;
-
-		$("#player1").addClass(jsonObject.race1);
-		$("#player2").addClass(jsonObject.race2);
-
-		$("#player1").html(`<div id="p1Name">${jsonObject.player1}</div>`);
-		$("#player2").html(`<div id="p2Name">${jsonObject.player2}</div>`);
 
 		if (jsonObject.capitalizeNames) {
-			$("#p1Name").css("text-transform", "uppercase");
-			$("#p2Name").css("text-transform", "uppercase");
+			$(".name").css("text-transform", "uppercase");
 		}
 
-		$("#p1Label").text(`${jsonObject.chatCmdWin}`);
-		$("#p2Label").text(`${jsonObject.chatCmdLose}`);
+		$("#player1 .name").html(`<span class='race ${jsonObject.race1}'></span>${jsonObject.player1}`);
+		$("#player2 .name").html(`<span class='race ${jsonObject.race2}'></span>${jsonObject.player2}`);
 
+		$("#player1 .bets").text(`${jsonObject.chatCmdWin}`);
+		$("#player2 .bets").text(`${jsonObject.chatCmdLose}`);
+
+		// Decide percentage or total amount
 		if (jsonObject.isPercentageBased) {
-			$("#p1BetBox").html(`${jsonObject.totalWin} %`);
-			$("#p2BetBox").html(`${jsonObject.totalLose} %`);
+			$("#stat-left span").html(`${jsonObject.totalWin} %`);
+			$("#stat-right span").html(`${jsonObject.totalLose} %`);
 		} else {
-			$("#p1BetBox").html(`${jsonObject.totalWin}`);
-			$("#p2BetBox").html(`${jsonObject.totalLose}`);
+			$("#stat-left span").html(`${jsonObject.totalWin} ${jsonObject.lblCurr}`);
+			$("#stat-right span").html(`${jsonObject.totalLose} ${jsonObject.lblCurr}`);
 		}
 
 		ShowBet();
@@ -134,64 +121,62 @@ if (window.WebSocket) {
 		console.log(jsonObject);
 
 		if (jsonObject.isPercentageBased) {
-			$("#p1BetBox").html(`${jsonObject.totalWin} %`);
-			$("#p2BetBox").html(`${jsonObject.totalLose} %`);
+			$("#stat-left span").html(`${jsonObject.totalWin} %`);
+			$("#stat-right span").html(`${jsonObject.totalLose} %`);
 		} else {
-			$("#p1BetBox").html(`${jsonObject.totalWin}`);
-			$("#p2BetBox").html(`${jsonObject.totalLose}`);
+			$("#stat-left span").html(`${jsonObject.totalWin} ${jsonObject.lblCurr}`);
+			$("#stat-right span").html(`${jsonObject.totalLose} ${jsonObject.lblCurr}`);
 		}
 	}
 
 	function StreamerWins() {
 		console.log("Streamer won");
-		// When hidden add a second for the FadeIn Animation
-		if (betHidden) {
-			ShowBet();
-			showWinnerForSec = showWinnerForSec+1000;
-		}
-        $("#p1Name").addClass("winner animated pulse infinite");
+		streamerWon = true;
+
+		ShowBet();
+
 	    setTimeout(function(){
 			CloseBet();
-	    }, showWinnerForSec);
+		}, showWinnerForSec+5000);
 	}
 
 	function StreamerLoses() {
 		console.log("Streamer lost");
-		// When hidden add a second for the FadeIn Animation
-		if (betHidden) {
-			ShowBet();
-			showWinnerForSec = showWinnerForSec+1000;
-		}
-        $("#p2Name").addClass("winner animated pulse infinite");
+		streamerWon = false;
+		ShowBet();
+
 	    setTimeout(function(){
 			CloseBet();
-	    }, showWinnerForSec);
+	    }, showWinnerForSec+5000);
 	}
 
 	function ShowBet() {
 		console.log("Show Bet");
 		var tl = new TimelineLite();
-		tl.fromTo("#container", 2, { top: -75 }, { top: 0 });
+		tl.to("#container", 2, { top: 0 });
+
+		console.log("StreamerWon: " + streamerWon);
+		if (typeof streamerWon === 'boolean' && streamerWon) {
+			$("#stat-left span").html("WINNER");
+			$("#stat-right").css("opacity", 0);
+		}
+		if (typeof streamerWon === 'boolean' && !streamerWon) {
+			$("#stat-right span").html("WINNER");
+			$("#stat-left").css("opacity", 0);
+		}
+		tl.to("#stats", 2, { top: 5 });
 	}
 
 	function HideBet() {
 		console.log("Hide Bet");
 		var tl = new TimelineLite();
-		tl.fromTo("#container", 2, { top: 0 }, { top: -75 });
+		tl.to("#stats", 2, { top: -40 });
+		tl.to("#container", 2, { top: -125 });
 		betHidden = true;
 	}
 
 	function CloseBet() {
 		console.log("Close Bet completely");
-
 		HideBet();
-
-		setShowWinnerDuration = false;
-
-		$("#p1Name").removeClass("winner animated pulse infinite");
-		$("#p2Name").removeClass("winner animated pulse infinite");
-
-		$("#player1").removeClass(player1Race);
-		$("#player2").removeClass(player2Race);
 	}
 };

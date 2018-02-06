@@ -5,7 +5,7 @@ Description: Automatic Betting System for the Game StarCraft II
 Created by: 
 Brain - www.twitch.tv/wellbrained
 Burny - www.twitch.tv/burnysc2
-Version: 1.2.0
+Version: 1.2.3
 
 #################
 Variables in the Response Messages
@@ -16,15 +16,19 @@ check out the Link/File in the same Directory: "Overview - Usable Variables (ope
 #################
 Overlay / Theme informations
 #################
-OBS BrowserSource Path: ..Scripts\SC2BetSystem\Overlays\index.html
+To use the overlay please create a new BrowserSource in your streaming software and use the path below:
+BrowserSource Path: "<Path to Chatbot folder>..\Scripts\SC2BetSystem\Overlays\index.html"
 
-# SC2Board
+# Theme: GSL
+BrowserSource Size for "GSL":           Width: 850px - Height: 125px
+
+# Theme: SC2ScoreBoard
+BrowserSource Size for "SC2ScoreBoard": Width: 719px - Height: 68px
+
+# Theme: SC2Board
 BrowserSource Size for "SC2Board":      Width: 645px - Height: 316px 
 You can set the FadeIn Animation in the "userSettings.js" file which is located in '..\SC2BetSystem\Overlays\'.
 You got 4 options to choose from which are written there. IMPORTANT: Keep in mind that those are case-sensitive! (TopDown, BottomUp, LeftRight, RightLeft)
-
-# SC2ScoreBoard
-BrowserSource Size for "SC2ScoreBoard": Width: 719px - Height: 68px
 
 
 ################
@@ -51,6 +55,20 @@ To enable overlays you need to click the `Insert API Key` on the contextmenu by 
 ###############
 Version History
 ###############
+1.2.3
+  ~ Fixed an issue with debugging / logging
+1.2.2
+  ~ Added a log feature so we can backtrack problems way faster
+  ~ Fixed an issue that bets would get stuck if streamer uses 'quit & rewind' feature
+  ~ Fixed an issue with the 'SC2Score' theme where it got displayed before the start
+
+1.2.1
+  ~ Added the GSL theme
+  ~ Hotfixes/improvements for the other themes
+  ~ Added a checkbox in the overlay options to decide if you want capitalized names or not
+  ~ Changed some labels, default values and tooltips
+  ~ Added an 'Open readme file' button
+
 1.2.0
   ~ Completely overhauled the sidebar menu for the script (Arrangements, labels, tooltips, etc)
   ~ Added a dropdown menu to choose from themes

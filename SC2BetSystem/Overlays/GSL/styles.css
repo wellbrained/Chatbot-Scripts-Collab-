@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+@import url('https://fonts.googleapis.com/css?family=Teko');
+
+*, html { 
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+  padding: 0;  
+  margin: 0;
+}
+body {
+  margin-top: 10px;
+}
+#container {
+  position: relative;
+  top: -125px;
+  left: 0;
+  
+  width: 850px;
+  height: 100px;
+  margin: 0 auto;
+  padding-top: 5px;
+  
+  font-size: 26px;
+  font-family: 'Cairo', sans-serif;
+  /* 
+  font-family: 'Teko', sans-serif; 
+  */
+  color: #231f39;
+  font-weight: bold;
+  text-align: center;
+  z-index: 5;
+}
+#vsColumn {
+  float: left;
+  font-size: 32px;
+  color: #fff;
+} 
+.player {
+  float: left;
+  width: 400px;
+  height: 73px;
+  
+  line-height: 73px;
+}
+.name {
+  float: left;
+  width: 300px;
+  padding-left: 25px;
+}
+#player1 {
+  background: url(http://brains-world.eu/chatbot/overlays/betting/gsl/gsl-banner-left.png) no-repeat;
+}
+#player2 {
+  background: url(http://brains-world.eu/chatbot/overlays/betting/gsl/gsl-banner-right.png) no-repeat;
+}
+.bets {
+  position: relative;
+  float: left;
+  width: 100px;
+  font-size: 18px;
+  line-height: 20px;
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+#player1 .bets {
+  left: -20px;
+}
+#player2 .bets {
+  left: 20px;
+}
+.race {
+  position: absolute;
+  width: 35px;
+  height: 40px;
+  margin-left: -40px;
+  margin-top: 15px;
+}
+.zerg {
+  background: url(http://brains-world.eu/chatbot/overlays/betting/gsl/zerg.png) no-repeat;
+  background-size: 100%;
+}
+.terran {
+  background: url(http://brains-world.eu/chatbot/overlays/betting/gsl/terran.png) no-repeat;
+  background-size: 100%;
+}
+.protoss {
+  background: url(http://brains-world.eu/chatbot/overlays/betting/gsl/protoss.png) no-repeat;
+  background-size: 100%;
+}
+.random {
+  background: url(http://brains-world.eu/chatbot/overlays/betting/gsl/random.png) no-repeat;
+  background-size: 100%;
+}
+
+#stats {
+  clear: both;
+  height: 33px;
+  position: relative;
+  top: -40px;
+  z-index: -1;
+}
+.stat {
+  float: left;
+  width: 188px;
+  height: 33px;
+  line-height: 35px;
+  font-size: 22px;
+  color: #fff;
+}
+#stat-left {
+  background: url(http://brains-world.eu/chatbot/overlays/betting/gsl/gsl-winner-bg-left.png) no-repeat;
+  background-size: 100%;
+  margin-left: 210px;
+}
+#stat-right {
+  background: url(http://brains-world.eu/chatbot/overlays/betting/gsl/gsl-winner-bg-right.png) no-repeat;
+  background-size: 100%;
+  margin-left: 40px;
+}
