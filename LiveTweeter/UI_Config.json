@@ -1,0 +1,143 @@
+﻿{
+    "output_file": "settings.json",
+    "openReadme": {
+        "type": "button",
+        "label": "Open Readme.txt",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "btnOpenReadme",
+        "wsevent": "",
+        "group": ""
+    },
+    "openTweetMessage": {
+        "type": "button",
+        "label": "Open TweetMessage.txt",
+        "tooltip": "Opens the 'TweetMessage.txt' which is the content of the message for Twitter.\r\nAvailable parameters inside the file:\r\n$message = The value of the 'Message for Tweet' textfield\r\n$url = Your URL to twitch.tv/<your channelname>\r\n$title = Current Title on Twitch\r\n$game = Current Game on Twitch",
+        "function": "btnOpenTweetMessageFile",
+        "wsevent": "",
+        "group": ""
+    },
+    "cbTweetWhenGoingLive": {
+        "type": "checkbox",
+        "value": false,
+        "label": "AutoTweet when going live",
+        "tooltip": "Want the bot to automatically send out a Tweet when going live?",
+        "group": ""
+    },
+    "txtTweetContent": {
+        "type": "textbox",
+        "value": "Optional textfield to use in the Message",
+        "label": "Message for Tweet",
+        "tooltip": "This textfield can be used inside the TweetMessage.txt as '$message' parameter. Simply for quick usage.",
+        "group": ""
+    },
+    "sendTweet": {
+        "type": "button",
+        "label": "Send Tweet manually",
+        "tooltip": "Send out the Tweet manually",
+        "function": "btnSendTweet",
+        "wsevent": "",
+        "group": ""
+    },
+    "sliderNewTweetAfterBreak": {
+        "type": "slider", 
+        "label": "Offline timer (minutes)", 
+        "value": 60, 
+        "min": 5, 
+        "max": 180, 
+        "ticks": 5, 
+        "tooltip": "How long does your stream have to be offline before a new AutoTweet is being sent out?", 
+        "group": ""
+    },
+    "cbPostTweetInChat": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Post Message with TweetUrl in Chat",
+        "tooltip": "If you want the Bot write a message after Tweeting with the URL to the Tweet so people can RT/like it.",
+        "group": "Message to Retweet"
+    },
+    "txtTweetLinkInChat": {
+        "type": "textbox",
+        "value": "Spread the word on Twitter ~ $tweetUrl",
+        "label": "Chatmessage",
+        "tooltip": "Message which the bot posts in chat after sending the Tweet out.\r\n$tweetURL = URL to Twitter Message",
+        "group": "Message to Retweet"
+    },
+    "cbPostMsgMultipleTimes": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Post the Message multiple times",
+        "tooltip": "If you want the Bot to write the message multiple times after going live.",
+        "group": "Message to Retweet"
+    },
+    "sliderRTInterval": {
+        "type": "slider", 
+        "label": "Interval (min)", 
+        "value": 15, 
+        "min": 5, 
+        "max": 60, 
+        "ticks": 5, 
+        "tooltip": "Set the time between each time the bot should post the message in minutes.", 
+        "group": "Message to Retweet"
+    }, 
+    "sliderRTAmount": {
+        "type": "slider", 
+        "label": "Amount of times", 
+        "value": 3, 
+        "min": 1, 
+        "max": 10, 
+        "ticks": 1, 
+        "tooltip": "Set the amount of times the bot should post the message.", 
+        "group": "Message to Retweet"
+    }, 
+    "txtPathPython": {
+        "type": "textbox",
+        "value": "C:\\python27\\python.exe",
+        "label": "Python Path",
+        "tooltip": "Enter the path to your default Python27 directory (per default: 'C:/Python27')",
+        "group": "User information (Keep it hidden)"
+    },
+    "btnExecuteCmd": {
+        "type": "button",
+        "label": "Install pip requests",
+        "tooltip": "Click this button to execute the command line 'python -m pip install requests requests_oauthlib' to install necessary libraries",
+        "function": "ExecuteCmd",
+        "wsevent": "",
+        "group": "User information (Keep it hidden)"
+    },
+    "btnRegisterTwitterApp": {
+        "type": "button",
+        "label": "Register Twitter App",
+        "tooltip": "Click this button to register your App for Twitter and get the Consumer-/Access information.",
+        "function": "OpenTwitterApp",
+        "wsevent": "",
+        "group": "User information (Keep it hidden)"
+    },
+    "txtConsumerKey": {
+        "type": "textbox",
+        "value": "",
+        "label": "Consumer Key",
+        "tooltip": "",
+        "group": "User information (Keep it hidden)"
+    },
+    "txtConsumerSecret": {
+        "type": "textbox",
+        "value": "",
+        "label": "Consumer Secret",
+        "tooltip": "",
+        "group": "User information (Keep it hidden)"
+    },
+    "txtAccessToken": {
+        "type": "textbox",
+        "value": "",
+        "label": "Access Token",
+        "tooltip": "",
+        "group": "User information (Keep it hidden)"
+    },
+    "txtAccessTokenSecret": {
+        "type": "textbox",
+        "value": "",
+        "label": "Access Token Secret",
+        "tooltip": "",
+        "group": "User information (Keep it hidden)"
+    }
+}
