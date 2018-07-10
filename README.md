@@ -1,9 +1,12 @@
 # Streamlabs Chatbot Scripts (Formerly AnkhBot)
+
 Scripts for the Streamlabs Chatbot to interact with your community on streaming platforms.
 
 You can find more infos and download it here: https://streamlabs.com/chatbot
 
 ## General scripts
+More experimental and newer versions can be found here https://github.com/BurnySc2/Ankhbot-Scripts-DevBranch
+
 - StreamTimers
 > Adds a custom Uptime and Countdown which is customizable per UI within Ankhbot or setup commands which can also be changed.
 
