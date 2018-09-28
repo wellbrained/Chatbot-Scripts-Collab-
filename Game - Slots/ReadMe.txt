@@ -1,16 +1,25 @@
 #################
 Info
 #################
-Description: Game - Slots for AnkhBot Chat
+Description: Slotmachine game for Twitch chat
 Created by: 
 Brain - www.twitch.tv/wellbrained
 Burny - www.twitch.tv/burnysc2
-Version: 1.1.5
+Version: 1.2.1
 
 
 ###############
 Version History
 ###############
+1.2.1:
+  ~ Added the option for a seperator between emotes
+  ~ Added checkboxes for specific emote checks
+  ~ Added the option to ignore all checks so you can use Emojis and Emoticons
+
+1.2.0:
+ ~ Changed methods to support Chatbot .29+ versions
+ ~ Fixed bug with cooldowns
+
 1.1.5:
  ~ Added an Open Readme button
  ~ Added the reward field for two seperated emotes (normally it's just returning the Cost)

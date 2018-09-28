@@ -75,7 +75,7 @@
     },
     "useCooldown": {
         "type": "checkbox",
-        "value": false,
+        "value": true,
         "label": "Use Cooldown Messages",
         "tooltip": "Enable/Disable cooldown messages",
         "group": "Cooldown"
@@ -150,5 +150,40 @@
         "label": "Combination - Three Superjackpot Emotes",
         "tooltip": "Message that will be posted when he has 3 super Emotes.\r\n$slots = 3 Rolled Emotes\r\n $user = Username\r\n$reward = Points he earned or lost.\r\n$currency = Name of Currency\r\n$cost = Cost to play",
         "group": "Response Messages"
+    },
+    "seperator": {
+        "type": "textbox",
+        "value": "",
+        "label": "Seperator between Emotes",
+        "tooltip": "Add a seperator between each emote if you want to.",
+        "group": "Settings"
+    },
+    "checkTwitchEmotes": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Allow Twitch emotes",
+        "tooltip": "Checks for valid Twitch emotes",
+        "group": "Settings"
+    },
+    "checkBTTVEmotes": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Allow BTTV emotes",
+        "tooltip": "Check for valid BetterTwitchTV emotes",
+        "group": "Settings"
+    },
+    "checkFFZEmotes": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Allow FFZ emotes",
+        "tooltip": "Check for valid FrankerFaceZ emotes",
+        "group": "Settings"
+    },
+    "ignoreEmoteCheck": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Ignore all emote checks",
+        "tooltip": "Ignores all emotes checks if you want to use emoticons/emojis, etc.",
+        "group": "Settings"
     }
 }
